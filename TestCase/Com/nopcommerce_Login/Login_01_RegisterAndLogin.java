@@ -25,6 +25,7 @@ public class Login_01_RegisterAndLogin {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.get("https://demo.nopcommerce.com/");
 		
+		// GENERATE RANDOM
 		email = "corona" + randowmNumber() + "@hotmail.com";
 		password = "coronavirus";
 	  } 
@@ -54,7 +55,7 @@ public class Login_01_RegisterAndLogin {
 	  driver.findElement(By.cssSelector("#register-button")).click();
 	  
 	  String resultText = driver.findElement(By.cssSelector(".result")).getText();
-	  //Assert.assertEquals(resultText, "Your registration completed");
+	  Assert.assertEquals(resultText, "Your registration completed");
 	  
 	  driver.findElement(By.cssSelector(".ico-logout")).click();
   }
