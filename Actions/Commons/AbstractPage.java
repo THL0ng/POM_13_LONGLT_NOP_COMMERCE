@@ -249,5 +249,43 @@ public class AbstractPage {
 		waitExplicit.until(ExpectedConditions.alertIsPresent());
 	}
 	
+	public void scrollToElement(String locator) {
+		element= driver.findElement(By.xpath(locator));
+		javascriptExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
+	}
 	
+	public void removeElementAttribute(String locator, String attributeRemove) {
+		element= driver.findElement(By.xpath(locator));
+		javascriptExecutor.executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", element);
+	}
+	
+	public void highlightElement(String locator) {
+		element = driver.findElement(By.xpath(locator));
+		String originalStyle = element.getAttribute("style");
+		javascriptExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", "border: 5px solid red; border-style: dashed;");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		javascriptExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle);
+
+	}
+	
+	public boolean checkAnyImageLoaded(WebDriver driver, String locator) {
+		element = driver.findElement(By.xpath(locator));
+		javascriptExecutor = (JavascriptExecutor)driver;
+		boolean status =(boolean) javascriptExecutor.executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth!=\"undefined\" &&arguments[0].naturalWidth>0 ", element);
+				if (status) {
+					return true;
+				}else {
+					return false;
+				}
+	}
+	
+	public boolean verifyTextInInnerText(WebDriver driver, String textExpected) {
+		javascriptExecutor = (JavascriptExecutor)driver;
+		String textActual = (String)javascriptExecutor.executeScript("return document.documentElement.innerText.match("+ textExpected + ")[0]");
+		return textActual.equals(textExpected);
+	}
 }
