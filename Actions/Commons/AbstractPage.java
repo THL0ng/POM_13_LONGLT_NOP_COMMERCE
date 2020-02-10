@@ -10,15 +10,19 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AbstractPage {
 	WebDriver driver;
 	Select select;
 	WebElement element;
 	Actions action;
+	By byLocator;
 	List<WebElement> elements;
 	JavascriptExecutor javascriptExecutor;
+	WebDriverWait waitExplicit;
 	long shortTimeout = 5;
 	long longTimeout = 30;
 	
@@ -220,9 +224,30 @@ public class AbstractPage {
 		action.sendKeys(element,key).perform();
 	}
 	
+	public void waitToElementPresence(String locator) {
+		byLocator = By.xpath(locator);
+		waitExplicit.until(ExpectedConditions.presenceOfElementLocated(byLocator));
+	}
 	
+	public void waitToElementVisible(String locator) {
+		byLocator = By.xpath(locator);
+		waitExplicit.until(ExpectedConditions.visibilityOfElementLocated(byLocator));
+	}
 	
+	public void waitToElementClickable(String locator) {
+		byLocator = By.xpath(locator);
+		waitExplicit.until(ExpectedConditions.elementToBeClickable(byLocator));
+	}
 	
+	public void waitToElementInvisible(String locator) {
+		byLocator = By.xpath(locator);
+		waitExplicit.until(ExpectedConditions.invisibilityOfElementLocated(byLocator));
+	}
+	
+	public void waitToAlertPresence(String locator) {
+		element = driver.findElement(By.xpath(locator));
+		waitExplicit.until(ExpectedConditions.alertIsPresent());
+	}
 	
 	
 }
