@@ -2,7 +2,7 @@
 <suite name="Nop Commerce" parallel="false">
   <test name="Run On FIREFOX">
     <classes>
-      <class name="Com.nopcommerce_Login.Login_02_RegisterAndLogin2_AbstractPage_02_Extends"/>
+      <class name="Com.nopcommerce_Login.Login_03_RegisterAndLogin_Page_Object"/>
     </classes>
   </test> 
 </suite> 
