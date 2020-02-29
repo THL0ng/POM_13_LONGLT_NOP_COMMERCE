@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Nop Commerce" parallel="false">
+  <test name="Run On FIREFOX">
+    <classes>
+      <class name="Com.liveGuru_Login.Login_01_LoginToSystem"/>
+    </classes>
+  </test> 
+</suite> 

@@ -4,9 +4,9 @@ import org.testng.annotations.Test;
 
 import Commons.AbstractPage;
 import Commons.AbstractPages;
-import PageObjects.HomePageObject;
-import PageObjects.LoginPageObject;
-import PageObjects.RegisterPageObject;
+import PageObjects.Nop_Commerce.HomePageObject;
+import PageObjects.Nop_Commerce.LoginPageObject;
+import PageObjects.Nop_Commerce.RegisterPageObject;
 
 import org.testng.annotations.BeforeTest;
 
@@ -21,7 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
-public class Login_03_RegisterAndLogin_Page_Object extends AbstractPages {
+public class Login_03_RegisterAndLogin_Page_Object  {
 	private WebDriver driver;
 	private Select select;
 	private String email, password , registerSuccessMsg;
@@ -34,9 +34,9 @@ public class Login_03_RegisterAndLogin_Page_Object extends AbstractPages {
 	  public void beforeTest() {
 		System.setProperty("webdriver.gecko.driver", ".\\LIB\\geckodriver.exe");
 		driver = new FirefoxDriver();
-	
-		openUrl(driver,"https://demo.nopcommerce.com/");
 		
+		driver.get("https://demo.nopcommerce.com/");
+	
 		//--> Home Page
 		homePage = new HomePageObject(driver);
 

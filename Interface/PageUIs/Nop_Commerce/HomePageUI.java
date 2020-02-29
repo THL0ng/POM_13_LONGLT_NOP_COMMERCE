@@ -1,4 +1,4 @@
-package PageUIs;
+package PageUIs.Nop_Commerce;
 
 public class HomePageUI {
 	public static final String REGISTER_LINK = "//div[@class ='header-links']//a[text()='Register']";

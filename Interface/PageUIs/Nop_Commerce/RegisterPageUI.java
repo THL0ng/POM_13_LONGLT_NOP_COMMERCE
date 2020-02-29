@@ -1,4 +1,4 @@
-package PageUIs;
+package PageUIs.Nop_Commerce;
 
 public class RegisterPageUI {
 	public static final String GENDER_MALE_RADIO = "//input[@id='gender-male']";

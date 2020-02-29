@@ -1,11 +1,11 @@
-package PageObjects;
+package PageObjects.Nop_Commerce;
 
 import org.openqa.selenium.WebDriver;
 
 import Commons.AbstractPages;
-import PageUIs.LoginPageUI;
+import PageUIs.Nop_Commerce.LoginPageUI;
 
-// PAGEOBJECTS CHỨA CÁC PAGE OBJECTS, MỖI PAGE SẼ CHỨA CÁC SỰ KIỆN LIÊN QUAN ĐẾN TC ĐANG VIẾT CỦA PAGE ĐÓ
+// PAGEOBJECTS CHỨA C�?C PAGE OBJECTS, MỖI PAGE SẼ CHỨA C�?C SỰ KIỆN LIÊN QUAN �?ẾN TC �?ANG VIẾT CỦA PAGE �?Ó
 public class LoginPageObject extends AbstractPages {
 	private WebDriver driver;
 	
