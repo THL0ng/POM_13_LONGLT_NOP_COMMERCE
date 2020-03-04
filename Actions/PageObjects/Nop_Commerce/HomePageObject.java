@@ -3,6 +3,7 @@ package PageObjects.Nop_Commerce;
 import org.openqa.selenium.WebDriver;
 
 import Commons.AbstractPages;
+import Commons.PageGeneratorManager;
 import PageUIs.Nop_Commerce.HomePageUI;
 
 public class HomePageObject extends AbstractPages{
@@ -13,16 +14,30 @@ public class HomePageObject extends AbstractPages{
 		
 	}
 
-	public RegisterPageObject clickToRegisterLink() {
+	/*public RegisterPageObject clickToRegisterLink() {
 		waitToElementClickable(driver, HomePageUI.REGISTER_LINK);
 		clickToElement(driver, HomePageUI.REGISTER_LINK);		
 		return new RegisterPageObject(driver);
+	} */
+	
+	
+	// DÙNG VỚI PAGE GENERATOR
+	public RegisterPageObject clickToRegisterLink() {
+		waitToElementClickable(driver, HomePageUI.REGISTER_LINK);
+		clickToElement(driver, HomePageUI.REGISTER_LINK);		
+		return PageGeneratorManager.getRegisterPage(driver);
 	}
 
-	public LoginPageObject clickToLoginlink() {
+	/*public LoginPageObject clickToLoginlink() {
 		waitToElementClickable(driver, HomePageUI.LOGIN_LINK);
 		clickToElement(driver, HomePageUI.LOGIN_LINK);		
 		return new LoginPageObject(driver);
+	} */
+	
+	public LoginPageObject clickToLoginlink() {
+		waitToElementClickable(driver, HomePageUI.LOGIN_LINK);
+		clickToElement(driver, HomePageUI.LOGIN_LINK);		
+		return PageGeneratorManager.getLoginPage(driver);
 	}
 
 	public boolean isMyAccountLinkDisplayed() {

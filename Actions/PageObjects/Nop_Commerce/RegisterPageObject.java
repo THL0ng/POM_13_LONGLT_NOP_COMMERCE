@@ -3,6 +3,7 @@ package PageObjects.Nop_Commerce;
 import org.openqa.selenium.WebDriver;
 
 import Commons.AbstractPages;
+import Commons.PageGeneratorManager;
 import PageUIs.Nop_Commerce.RegisterPageUI;
 
 public class RegisterPageObject extends AbstractPages {
@@ -86,10 +87,19 @@ public class RegisterPageObject extends AbstractPages {
 		return getTextlement(driver, RegisterPageUI.REGISTER_SUCCESS_TEXT);	
 	}
 
-	public HomePageObject clickToLogoutLink() {
+	/*public HomePageObject clickToLogoutLink() {
 		waitToElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
 		clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
 		return new HomePageObject(driver) ;
-	}
+	} */
+	
+	
+	// DÙNG VỚI GENERATOR MANGAGER
+	public HomePageObject clickToLogoutLink() {
+	waitToElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
+	clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
+	return PageGeneratorManager.getHomePageObject(driver);
+	} 
+	
 
 }
