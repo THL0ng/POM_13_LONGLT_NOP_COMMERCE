@@ -9,6 +9,7 @@ import PageObjects.Nop_Commerce.LoginPageObject;
 import PageObjects.Nop_Commerce.RegisterPageObject;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
+
 import java.util.Random;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -21,10 +22,10 @@ public class Login_06_RegisterAndLogin_Multi_Browser_Parallel extends AbstractTe
 	private LoginPageObject loginPage;
 	private RegisterPageObject registerPage;
 	
-	@Parameters ({"browser" , "url"})
+	@Parameters ({"browser"})
 	@BeforeTest
-	  public void beforeTest(String browserName , String autUrl) {
-		driver = getBrowserDriver(browserName, autUrl);
+	  public void beforeTest(String browserName) {
+		driver = getBrowserDriver(browserName);
 		
 		homePage = PageGeneratorManager.getHomePageObject(driver);	
 		email = "corona" + randowmNumber() + "@hotmail.com";

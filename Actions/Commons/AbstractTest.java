@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 public class AbstractTest {
 	private WebDriver driver;
 	
-	public WebDriver getBrowserDriver(String browserName , String autUrl) {
+	public WebDriver getBrowserDriver(String browserName) {
 		if(browserName.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", ".\\LIB\\chromedriver.exe");
 			driver = new ChromeDriver();		
@@ -33,7 +33,7 @@ public class AbstractTest {
 			driver = new FirefoxDriver(options);
 		}
 
-		driver.get(autUrl);
+		driver.get(GlobalConstants.DEV_URL);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		
 		return driver;
