@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Nop Commerce" parallel="false">
+	<parameter name="url" value="https://demo.nopcommerce.com/" />
+  
   <test name="Run On FIREFOX">
+  	<parameter name="browser" value="firefox"></parameter>
     <classes>
-      <class name="Com.nopcommerce_Login.Login_05_RegisterAndLogin_Page_Generator"/>
+      <class name="Com.nopcommerce_Login.Login_06_RegisterAndLogin_Multi_Browser_Parallel"/>
     </classes>
   </test> 
+  
+  <test name="Run On CHROME">
+ 	<parameter name="browser" value="chrome"></parameter>
+    <classes>
+      <class name="Com.nopcommerce_Login.Login_06_RegisterAndLogin_Multi_Browser_Parallel"/>
+    </classes>
+  </test> 
+  
+  <test name="Run On CHROME HEADLESS">
+  	<parameter name="browser" value="headless_chrome"></parameter>
+    <classes>
+      <class name="Com.nopcommerce_Login.Login_06_RegisterAndLogin_Multi_Browser_Parallel"/>
+    </classes>
+  </test> 
+  
+  <test name="Run On FIREFOX HEADLESS">
+  	<parameter name="browser" value="headless_firefox"></parameter>
+    <classes>
+      <class name="Com.nopcommerce_Login.Login_06_RegisterAndLogin_Multi_Browser_Parallel"/>
+    </classes>
+  </test> 
+  
+   
 </suite> 
