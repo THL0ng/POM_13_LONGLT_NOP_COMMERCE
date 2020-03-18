@@ -5,30 +5,22 @@
   <test name="Run On FIREFOX">
   	<parameter name="browser" value="firefox"></parameter>
     <classes>
-      <class name="Com.nopcommerce_Login.Login_06_RegisterAndLogin_Multi_Browser_Parallel"/>
+      <class name="Com.nopcommerce_Login.Login_07_RegisterAndLogin_Factory_Pattern"/>
     </classes>
   </test> 
   
   <test name="Run On CHROME">
  	<parameter name="browser" value="chrome"></parameter>
     <classes>
-      <class name="Com.nopcommerce_Login.Login_06_RegisterAndLogin_Multi_Browser_Parallel"/>
+      <class name="Com.nopcommerce_Login.Login_07_RegisterAndLogin_Factory_Pattern"/>
     </classes>
   </test> 
   
   <test name="Run On CHROME HEADLESS">
   	<parameter name="browser" value="headless_chrome"></parameter>
     <classes>
-      <class name="Com.nopcommerce_Login.Login_06_RegisterAndLogin_Multi_Browser_Parallel"/>
+      <class name="Com.nopcommerce_Login.Login_07_RegisterAndLogin_Factory_Pattern"/>
     </classes>
   </test> 
-  
-  <test name="Run On FIREFOX HEADLESS">
-  	<parameter name="browser" value="headless_firefox"></parameter>
-    <classes>
-      <class name="Com.nopcommerce_Login.Login_06_RegisterAndLogin_Multi_Browser_Parallel"/>
-    </classes>
-  </test> 
-  
-   
+    
 </suite> 
