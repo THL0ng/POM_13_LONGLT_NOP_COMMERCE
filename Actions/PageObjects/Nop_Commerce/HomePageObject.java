@@ -46,6 +46,16 @@ public class HomePageObject extends AbstractPages{
 		return isElementDisplayed(driver,HomePageUI.MY_ACCOUNT_LINK);
 	}
 
+	public FooterMyAccountPageObject openFooterMyAccountPage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public FooterSearchPageObject openFooterSearchPage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }
