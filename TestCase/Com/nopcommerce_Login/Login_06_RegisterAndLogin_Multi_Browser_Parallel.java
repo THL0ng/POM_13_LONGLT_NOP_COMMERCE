@@ -27,7 +27,7 @@ public class Login_06_RegisterAndLogin_Multi_Browser_Parallel extends AbstractTe
 	  public void beforeTest(String browserName) {
 		driver = getBrowserDriver(browserName);
 		
-		homePage = PageGeneratorManager.getHomePageObject(driver);	
+		homePage = PageGeneratorManager.getHomePage(driver);	
 		email = "corona" + randowmNumber() + "@hotmail.com";
 		password = "coronavirus";
 	  } 

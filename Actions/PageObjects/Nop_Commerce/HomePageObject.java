@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import Commons.AbstractPages;
 import Commons.PageGeneratorManager;
+import PageUIs.Nop_Commerce.FooterNewProductPageUI;
 import PageUIs.Nop_Commerce.HomePageUI;
 
 public class HomePageObject extends AbstractPages{
@@ -41,19 +42,21 @@ public class HomePageObject extends AbstractPages{
 	}
 
 	public boolean isMyAccountLinkDisplayed() {
-		waitToElementDisplayed(driver,HomePageUI.MY_ACCOUNT_LINK);
-		isElementDisplayed(driver,HomePageUI.MY_ACCOUNT_LINK);
-		return isElementDisplayed(driver,HomePageUI.MY_ACCOUNT_LINK);
+		waitToElementDisplayed(driver,HomePageUI.HEADER_MY_ACCOUNT_LINK);
+		isElementDisplayed(driver,HomePageUI.HEADER_MY_ACCOUNT_LINK);
+		return isElementDisplayed(driver,HomePageUI.HEADER_MY_ACCOUNT_LINK);
 	}
 
 	public FooterMyAccountPageObject openFooterMyAccountPage() {
-		// TODO Auto-generated method stub
-		return null;
+		waitToElementDisplayed(driver,HomePageUI.FOOTER_MY_ACCOUNT_LINK);
+		clickToElement(driver, HomePageUI.FOOTER_MY_ACCOUNT_LINK);		
+		return PageGeneratorManager.getFooterMyAccountPage(driver);
 	}
 
 	public FooterSearchPageObject openFooterSearchPage() {
-		// TODO Auto-generated method stub
-		return null;
+		waitToElementDisplayed(driver,HomePageUI.FOOTER_SEARCH_LINK);
+		clickToElement(driver, HomePageUI.FOOTER_SEARCH_LINK);		
+		return PageGeneratorManager.getFooterSearchPage(driver);
 	}
 
 	

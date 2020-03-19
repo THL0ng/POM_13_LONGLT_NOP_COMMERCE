@@ -40,7 +40,7 @@ public class Login_05_RegisterAndLogin_Page_Generator  {
 	
 		//--> Home Page
 		//homePage = new HomePageObject(driver);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		
 		
 		// GENERATE RANDOM

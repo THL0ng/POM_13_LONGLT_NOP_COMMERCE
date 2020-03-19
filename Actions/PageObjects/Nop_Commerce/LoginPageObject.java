@@ -31,7 +31,7 @@ public class LoginPageObject extends AbstractPages {
 	public HomePageObject clickToLoginButton() {
 		waitToElementClickable(driver, LoginPageUI.LOGIN_BUTTON);
 		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);	
-		return PageGeneratorManager.getHomePageObject(driver);
+		return PageGeneratorManager.getHomePage(driver);
 	}
 
 	public void inputToPasswordTextBox(String passwordValue) {

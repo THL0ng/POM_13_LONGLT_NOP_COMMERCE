@@ -33,7 +33,7 @@ public class Login_08_RegisterAndLogin_Action_Chain extends AbstractTest  {
 	  public void beforeTest(String browserName) {
 		driver = getBrowserDriver(browserName);
 		
-		homePage = PageGeneratorManager.getHomePageObject(driver);	
+		homePage = PageGeneratorManager.getHomePage(driver);	
 		email = "corona" + randowmNumber() + "@hotmail.com";
 		password = "coronavirus";
 	  } 
@@ -82,7 +82,7 @@ public class Login_08_RegisterAndLogin_Action_Chain extends AbstractTest  {
 	  newProductPage = searchPage.openFooterNewProductPage();
 	  
 	  // New products -> Home page
-	  newProductPage.openHomePage();
+	  homePage = newProductPage.openHomePage();
 	  
 	  // Home page -> Search
 	  searchPage = homePage.openFooterSearchPage();

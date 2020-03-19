@@ -11,7 +11,7 @@ import PageObjects.Nop_Commerce.RegisterPageObject;
 
 public class PageGeneratorManager {
 	// CẤP PHÁT VIỆC KHỞI TAO6 ĐỐI TƯỢNG CHO HOME PAGE
-	public static HomePageObject getHomePageObject(WebDriver driver) {
+	public static HomePageObject getHomePage(WebDriver driver) {
 		return new HomePageObject(driver);
 	}
 	
@@ -42,5 +42,7 @@ public class PageGeneratorManager {
 		return new FooterSearchPageObject(driver);
 		
 	}
+
+	
 
 }

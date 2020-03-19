@@ -35,7 +35,7 @@ public class Login_07_RegisterAndLogin_Factory_Pattern extends AbstractTest  {
 		driver = driverManager.getBrowserDriver();
 		
 		
-		homePage = PageGeneratorManager.getHomePageObject(driver);	
+		homePage = PageGeneratorManager.getHomePage(driver);	
 		email = "corona" + randowmNumber() + "@hotmail.com";
 		password = "coronavirus";
 	  } 
