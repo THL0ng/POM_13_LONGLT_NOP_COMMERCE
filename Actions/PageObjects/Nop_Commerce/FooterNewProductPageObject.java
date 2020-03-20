@@ -14,14 +14,5 @@ private WebDriver driver;
 		driver = _driver;
 		
 	}
-	
-	public HomePageObject openHomePage() {	
-		waitToElementDisplayed(driver,FooterNewProductPageUI.HOME_PAGE_IMAGE);
-		clickToElement(driver, FooterNewProductPageUI.HOME_PAGE_IMAGE);		
-		return PageGeneratorManager.getHomePage(driver);
-		
-	}
-
-	
 
 }

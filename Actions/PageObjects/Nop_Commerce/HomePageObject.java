@@ -47,18 +47,4 @@ public class HomePageObject extends AbstractPages{
 		return isElementDisplayed(driver,HomePageUI.HEADER_MY_ACCOUNT_LINK);
 	}
 
-	public FooterMyAccountPageObject openFooterMyAccountPage() {
-		waitToElementDisplayed(driver,HomePageUI.FOOTER_MY_ACCOUNT_LINK);
-		clickToElement(driver, HomePageUI.FOOTER_MY_ACCOUNT_LINK);		
-		return PageGeneratorManager.getFooterMyAccountPage(driver);
-	}
-
-	public FooterSearchPageObject openFooterSearchPage() {
-		waitToElementDisplayed(driver,HomePageUI.FOOTER_SEARCH_LINK);
-		clickToElement(driver, HomePageUI.FOOTER_SEARCH_LINK);		
-		return PageGeneratorManager.getFooterSearchPage(driver);
-	}
-
-	
-
 }

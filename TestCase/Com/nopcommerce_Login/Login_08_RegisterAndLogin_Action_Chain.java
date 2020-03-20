@@ -73,19 +73,28 @@ public class Login_08_RegisterAndLogin_Action_Chain extends AbstractTest  {
   @Test
   public void TC_03_Action_Chain() {
 	  //Home Page -> My Account (Footer)
-	  myAccountPage = homePage.openFooterMyAccountPage();
+	  myAccountPage = homePage.openFooterMyAccountPage(driver);
+	  myAccountPage.sleepInSecond(2);
 	  
 	  // My Account -> Search
-	  searchPage = myAccountPage.openFooterSearchPage();
+	  searchPage = myAccountPage.openFooterSearchPage(driver);
+	  searchPage.sleepInSecond(2);
+
 	  
 	  // Search -> New products
-	  newProductPage = searchPage.openFooterNewProductPage();
+	  newProductPage = searchPage.openFooterNewProductPage(driver);
+	  newProductPage.sleepInSecond(2);
+
 	  
 	  // New products -> Home page
-	  homePage = newProductPage.openHomePage();
+	  homePage = newProductPage.openHomePage(driver);
+	  homePage.sleepInSecond(2);
+
 	  
 	  // Home page -> Search
-	  searchPage = homePage.openFooterSearchPage();
+	  searchPage = homePage.openFooterSearchPage(driver);
+	  searchPage.sleepInSecond(2);
+
 	  
 	  
 	  	  

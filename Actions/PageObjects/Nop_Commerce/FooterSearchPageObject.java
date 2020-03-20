@@ -15,10 +15,4 @@ private WebDriver driver;
 		
 	}
 
-	public FooterNewProductPageObject openFooterNewProductPage() {
-		waitToElementDisplayed(driver, FooterSearchPageUI.FOOTER_NEW_PRODUCT_LINK);	
-		clickToElement(driver, FooterSearchPageUI.FOOTER_NEW_PRODUCT_LINK);		
-		return PageGeneratorManager.getFooterNewProductPage(driver);
-	}
-
 }
