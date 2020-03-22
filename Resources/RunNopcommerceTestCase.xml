@@ -5,7 +5,7 @@
   <test name="Run On FIREFOX">
   	<parameter name="browser" value="firefox"></parameter>
     <classes>
-      <class name="Com.nopcommerce_Login.Login_08_RegisterAndLogin_Action_Chain"/>
+      <class name="Com.nopcommerce_Login.Login_09_RegisterAndLogin_Dynamic_Locator"/>
     </classes>
   </test> 
    

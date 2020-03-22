@@ -1,6 +1,7 @@
 package Commons;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import PageObjects.Nop_Commerce.FooterMyAccountPageObject;
 import PageObjects.Nop_Commerce.FooterNewProductPageObject;
@@ -27,6 +28,10 @@ public class PageGeneratorManager {
 		
 	}
 	
+	public static LoginPageObject getLoginPage(WebDriver driver ,WebDriverWait wait) {
+		return new LoginPageObject(driver, wait);
+		
+	}
 	public static FooterMyAccountPageObject getFooterMyAccountPage(WebDriver driver) {
 		return new FooterMyAccountPageObject(driver);
 		

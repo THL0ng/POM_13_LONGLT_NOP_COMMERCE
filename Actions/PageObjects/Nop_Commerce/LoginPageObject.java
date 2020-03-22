@@ -1,6 +1,7 @@
 package PageObjects.Nop_Commerce;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Commons.AbstractPages;
 import Commons.PageGeneratorManager;
@@ -9,9 +10,16 @@ import PageUIs.Nop_Commerce.LoginPageUI;
 // PAGEOBJECTS CHỨA C�?C PAGE OBJECTS, MỖI PAGE SẼ CHỨA C�?C SỰ KIỆN LIÊN QUAN �?ẾN TC �?ANG VIẾT CỦA PAGE �?Ó
 public class LoginPageObject extends AbstractPages {
 	private WebDriver driver;
+	private WebDriverWait waitExplicit;
 	
 	public LoginPageObject(WebDriver _driver) {
 		driver = _driver;
+		
+	}
+	
+	public LoginPageObject (WebDriver _driver, WebDriverWait waitExplicit) {
+		driver = _driver;
+		this.waitExplicit = waitExplicit;
 		
 	}
 

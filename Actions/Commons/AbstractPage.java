@@ -23,8 +23,7 @@ public class AbstractPage {
 	List<WebElement> elements;
 	private JavascriptExecutor javascriptExecutor;
 	private WebDriverWait waitExplicit;
-	long shortTimeout = 5;
-	long longTimeout = 30;
+	
 	
 
 	public AbstractPage (WebDriver localDriver) {
@@ -32,7 +31,7 @@ public class AbstractPage {
 	}
 	public void openUrl(String urlValue) {
 		driver.get(urlValue);
-		driver.manage().timeouts().implicitlyWait(longTimeout, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT,TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
 	
@@ -228,37 +227,37 @@ public class AbstractPage {
 	}
 	
 	public void waitToElementPresence(String locator) {
-		waitExplicit = new WebDriverWait(driver, 30);
+		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		byLocator = By.xpath(locator);
 		waitExplicit.until(ExpectedConditions.presenceOfElementLocated(byLocator));
 	}
 	
 	public void waitToElementVisible(String locator) {
-		waitExplicit = new WebDriverWait(driver, 30);
+		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		byLocator = By.xpath(locator);
 		waitExplicit.until(ExpectedConditions.visibilityOfElementLocated(byLocator));
 	}
 	
 	public void waitToElementClickable(String locator) {
-		waitExplicit = new WebDriverWait(driver, 30);
+		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		byLocator = By.xpath(locator);
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(byLocator));
 	}
 	
 	public void waitToElementInvisible(String locator) {
-		waitExplicit = new WebDriverWait(driver, 30);
+		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		byLocator = By.xpath(locator);
 		waitExplicit.until(ExpectedConditions.invisibilityOfElementLocated(byLocator));
 	}
 	
 	public void waitToElementDisplayed(WebDriver driver ,String locator) {
-		waitExplicit = new WebDriverWait(driver, 30);
+		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		byLocator = By.xpath(locator);
 		waitExplicit.until(ExpectedConditions.visibilityOfElementLocated(byLocator));	
 	}
 	
 	public void waitToAlertPresence(String locator) {
-		waitExplicit = new WebDriverWait(driver, 30);
+		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		element = driver.findElement(By.xpath(locator));
 		waitExplicit.until(ExpectedConditions.alertIsPresent());
 	}
