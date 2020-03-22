@@ -31,7 +31,7 @@ public class AbstractPage {
 	}
 	public void openUrl(String urlValue) {
 		driver.get(urlValue);
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT,TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT ,TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
 	
