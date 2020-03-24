@@ -82,8 +82,9 @@ public class Login_09_RegisterAndLogin_Dynamic_Locator extends AbstractTest  {
 
 	  
 	  // Search -> New products
-	  newProductPage = (FooterNewProductPageObject) searchPage.openFooterPageByName(driver,"New products");
+	  newProductPage = (FooterNewProductPageObject) searchPage.openFooterPageByName(driver, "New products");
 	  newProductPage.sleepInSecond(2);
+
 	  
 	  // New products -> Home page
 	  homePage = newProductPage.openHomePage(driver);

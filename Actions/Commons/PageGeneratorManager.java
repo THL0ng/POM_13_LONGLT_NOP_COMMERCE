@@ -22,7 +22,7 @@ public class PageGeneratorManager {
 		
 	}
 	
-	// CẤP PHÁT VIỆC KHỞI TAO6 ĐỐI TƯỢNG CHO LOGINR PAGE
+	// CẤP PHÁT VIỆC KHỞI TAO6 ĐỐI TƯỢNG CHO LOGIN PAGE
 	public static LoginPageObject getLoginPage(WebDriver driver) {
 		return new LoginPageObject(driver);
 		

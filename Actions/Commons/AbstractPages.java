@@ -45,7 +45,7 @@ public class AbstractPages {
 		try {
 			Thread.sleep(timeout * 1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -104,7 +104,7 @@ public class AbstractPages {
 	}
 	
 	public WebElement findElementByXpath(WebDriver driver,String locator,String... values) {
-		locator = String.format(locator,(Object) values);
+		locator = String.format(locator,(Object[]) values);
 		return  driver.findElement(By.xpath(locator));
 		
 	}
@@ -114,7 +114,7 @@ public class AbstractPages {
 	}
 	
 	public List <WebElement> findElementsByXpath(WebDriver driver,String locator,String... values) {
-		locator = String.format(locator,(Object) values);
+		locator = String.format(locator,(Object[]) values);
 		return driver.findElements(By.xpath(locator));
 	}
 	
@@ -134,7 +134,7 @@ public class AbstractPages {
 	}
 	
 	public void clickToElement(WebDriver driver,String locator, String...values) {
-		findElementByXpath(driver, locator,values).click();
+		findElementByXpath(driver,locator,values).click();
 	}
 	
 	public void selectItemInDropdown (WebDriver driver,String locator, String valueItem) {
@@ -299,19 +299,19 @@ public class AbstractPages {
 	
 	public void waitToElementVisible(WebDriver driver,String locator,String... values) {
 		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-		byLocator = By.xpath(locator);
+		byLocator = byxpathLocator(locator,values);
 		waitExplicit.until(ExpectedConditions.visibilityOfElementLocated(byLocator));	
 	}
 	
 	public void waitToElementClickable(WebDriver driver,String locator) {
 		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-		byLocator = By.xpath(locator);
+		byLocator = byxpathLocator(locator);
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(byLocator));
 	}
 	
 	public void waitToElementClickable(WebDriver driver,String locator,String... values) {
 		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-		byLocator = By.xpath(locator);
+		byLocator = byxpathLocator(locator,values);
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(byLocator));
 	}
 	
@@ -373,8 +373,8 @@ public class AbstractPages {
 	// OPEN FOOTER PAGE
 	
 	public FooterMyAccountPageObject openFooterMyAccountPage(WebDriver driver) {
-		waitToElementVisible(driver,AbstractPageUI.DYNAMIC_FOOTER_LINK);
-		clickToElement(driver, AbstractPageUI.DYNAMIC_FOOTER_LINK);		
+		waitToElementVisible(driver,AbstractPageUI.FOOTER_MY_ACCOUNT_LINK);
+		clickToElement(driver, AbstractPageUI.FOOTER_MY_ACCOUNT_LINK);		
 		return PageGeneratorManager.getFooterMyAccountPage(driver);
 	}
 
