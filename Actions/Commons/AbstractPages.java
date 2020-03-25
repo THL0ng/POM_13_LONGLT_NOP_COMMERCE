@@ -189,6 +189,10 @@ public class AbstractPages {
 		return findElementByXpath(driver, locator).getText();
 	}
 	
+	public String getTextlement(WebDriver driver,String locator,String... values) {
+		return findElementByXpath(driver, locator, values).getText();
+	}
+	
 	public boolean isElementDisplayed(WebDriver driver,String locator) {
 		return findElementByXpath(driver, locator).isDisplayed();
 	}
