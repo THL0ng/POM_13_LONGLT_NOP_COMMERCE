@@ -28,7 +28,7 @@ public class Login_09_RegisterAndLogin_Dynamic_Locator extends AbstractTest  {
 	private FooterNewProductPageObject newProductPage;
 	private FooterSearchPageObject searchPage; 
 	
-	// check 
+	
 	@Parameters ({"browser"})
 	@BeforeTest
 	  public void beforeTest(String browserName) {

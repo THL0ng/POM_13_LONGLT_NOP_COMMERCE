@@ -19,10 +19,7 @@ import PageObjects.Nop_Commerce.FooterNewProductPageObject;
 import PageObjects.Nop_Commerce.FooterSearchPageObject;
 import PageObjects.Nop_Commerce.HomePageObject;
 import PageUIs.Nop_Commerce.AbstractPageUI;
-import PageUIs.Nop_Commerce.FooterMyAccountPageUI;
-import PageUIs.Nop_Commerce.FooterNewProductPageUI;
-import PageUIs.Nop_Commerce.FooterSearchPageUI;
-import PageUIs.Nop_Commerce.HomePageUI;
+
 
 public class AbstractPages {
 	private Select select;
@@ -406,7 +403,7 @@ public class AbstractPages {
 		switch (pageName) {
 		case "Search":		
 			return PageGeneratorManager.getFooterSearchPage(driver);
-		case "New producets":
+		case "New products":
 			return PageGeneratorManager.getFooterNewProductPage(driver);
 		default:
 			return PageGeneratorManager.getFooterMyAccountPage(driver);
