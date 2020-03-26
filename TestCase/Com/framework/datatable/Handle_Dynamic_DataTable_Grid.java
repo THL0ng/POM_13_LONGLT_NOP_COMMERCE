@@ -82,10 +82,24 @@ public class Handle_Dynamic_DataTable_Grid extends AbstractPages{
 			 
 			 total = getTotalValueByCountryName("Arab Rep of Egypt");
 			 System.out.println("Arab Rep of Egypt = " + total);
-			 Assert.assertEquals(total, "1567904");
-
-
+			 Assert.assertEquals(total, "1567904");		 
+		 }
+		 
+		 @Test
+		 public void TC_04_Input_To_Textbox() {
+			 driver.get("https://www.jqueryscript.net/demo/jQuery-Dynamic-Data-Grid-Plugin-appendGrid/");
 			 
+			 inputToTextboxByColumnNameAndRowNumber("company" , "2" , "KMS");
+			 sleepInSecond(2);
+			 
+			 inputToTextboxByColumnNameAndRowNumber("name" , "1" , "Shen Long");
+			 sleepInSecond(2);
+		 
+			 inputToTextboxByColumnNameAndRowNumber("orderPlaced" , "3" , "500");
+			 sleepInSecond(2);
+
+
+
 			 
 		 }
 		 
@@ -116,6 +130,15 @@ public class Handle_Dynamic_DataTable_Grid extends AbstractPages{
 			locator = "//td[@data-key='country' and text()='%s']/following-sibling::td[@data-key='total']";
 			waitToElementVisible(driver, locator, countryName);
 			return getTextlement(driver,locator,countryName);
+		}
+		
+		public void inputToTextboxByColumnNameAndRowNumber(String columnName, String rowNumber, String value) {
+			locator = "//input[@id='tblAppendGrid_%s_%s']";
+			waitToElementVisible(driver, locator, columnName,rowNumber);
+			senkeyToElement(driver, locator, value, columnName,rowNumber);
+
+
+			
 		}
 	  
 	

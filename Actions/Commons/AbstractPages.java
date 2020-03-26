@@ -181,6 +181,17 @@ public class AbstractPages {
 		}
 	}
 	
+	
+	public void senkeyToElement(WebDriver driver,String locator , String valueToSenkey, String... values) {
+		findElementByXpath(driver, locator, values).clear();
+		findElementByXpath(driver, locator, values).sendKeys(valueToSenkey);
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			
+			e.printStackTrace();
+		}
+	}
 	public String getAttributeElement(WebDriver driver,String locator , String attributeName) {
 		return findElementByXpath(driver, locator).getAttribute(attributeName);
 	}
