@@ -16,6 +16,7 @@ import org.testng.annotations.AfterClass;
 public class Handle_Dynamic_DataTable_Grid extends AbstractPages{
 		WebDriver driver;
 		String locator , total;
+		int index;
 		
 		
 		 @BeforeClass
@@ -89,19 +90,43 @@ public class Handle_Dynamic_DataTable_Grid extends AbstractPages{
 		 public void TC_04_Input_To_Textbox() {
 			 driver.get("https://www.jqueryscript.net/demo/jQuery-Dynamic-Data-Grid-Plugin-appendGrid/");
 			 
-			 inputToTextboxByColumnNameAndRowNumber("company" , "2" , "KMS");
+			// inputToTextboxByColumnNameAndRowNumber("company" , "2" , "KMS");
+			 inputToTextboxByColumnAndRow("Company" , "2" , "KMS");
 			 sleepInSecond(2);
 			 
-			 inputToTextboxByColumnNameAndRowNumber("name" , "1" , "Shen Long");
+			// inputToTextboxByColumnNameAndRowNumber("name" , "1" , "Shen Long");
+			 inputToTextboxByColumnAndRow("Contact Person" , "1" , "Shen Long");
 			 sleepInSecond(2);
 		 
-			 inputToTextboxByColumnNameAndRowNumber("orderPlaced" , "3" , "500");
+			// inputToTextboxByColumnNameAndRowNumber("orderPlaced" , "3" , "500");
+			 inputToTextboxByColumnAndRow("Contact Person" , "3" , "500");
 			 sleepInSecond(2);
-
-
-
 			 
 		 }
+		 
+		 
+		 @Test
+		 public void TC_05_Click_Icon_By_Row() {
+			 driver.get("https://www.jqueryscript.net/demo/jQuery-Dynamic-Data-Grid-Plugin-appendGrid/");
+			 
+			 // REMOVE ROW 1
+			 clickToIconByRowNumber("Remove", "1");
+			 sleepInSecond(2);
+			
+			 //INSERT ROW 1
+			 clickToIconByRowNumber("Insert", "1");
+			 sleepInSecond(2);
+
+			
+			 // MOVE UP ROW 3
+			 clickToIconByRowNumber("Move Up", "3");
+			 sleepInSecond(2);
+
+			 
+
+		 }
+	
+		 
 		 
 		 // GO TO PAGE BY PAGE NUMBER
 		public void goToPageByPageNumber(String pageNumber) {
@@ -135,10 +160,22 @@ public class Handle_Dynamic_DataTable_Grid extends AbstractPages{
 		public void inputToTextboxByColumnNameAndRowNumber(String columnName, String rowNumber, String value) {
 			locator = "//input[@id='tblAppendGrid_%s_%s']";
 			waitToElementVisible(driver, locator, columnName,rowNumber);
-			senkeyToElement(driver, locator, value, columnName,rowNumber);
-
-
-			
+			sendkeyToElement(driver, locator, value, columnName,rowNumber);
+		
+		}
+		
+		public void inputToTextboxByColumnAndRow(String columnName, String rowNumber, String value) {
+			locator = "//th[text()='%s']/preceding-sibling::th";
+			index = findElementsByXpath(driver, locator, columnName).size() +1;
+			locator = "//tr["+ rowNumber + "]//td[" + index + "]/input";
+			waitToElementVisible(driver, locator);
+			sendkeyToElement(driver,locator,value);
+		}
+		
+		public void clickToIconByRowNumber(String iconName, String rowNumber) {
+			locator = "//tbody//tr[%s]//button[contains(@title, '%s')]";
+			waitToElementClickable(driver, locator, rowNumber,iconName );
+			clickToElement(driver, locator, rowNumber,iconName );
 		}
 	  
 	

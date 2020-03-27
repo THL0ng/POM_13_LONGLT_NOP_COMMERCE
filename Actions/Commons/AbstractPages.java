@@ -182,7 +182,7 @@ public class AbstractPages {
 	}
 	
 	
-	public void senkeyToElement(WebDriver driver,String locator , String valueToSenkey, String... values) {
+	public void sendkeyToElement(WebDriver driver,String locator , String valueToSenkey, String... values) {
 		findElementByXpath(driver, locator, values).clear();
 		findElementByXpath(driver, locator, values).sendKeys(valueToSenkey);
 		try {
