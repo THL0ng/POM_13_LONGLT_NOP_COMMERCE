@@ -1,4 +1,4 @@
-package Com.framework.datatable;
+package Com.framework.demo;
 
 import org.testng.annotations.Test;
 

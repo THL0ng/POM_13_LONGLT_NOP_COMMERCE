@@ -1,5 +1,6 @@
 package Commons;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -7,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -29,6 +31,7 @@ public class AbstractPages {
 	List<WebElement> elements;
 	private JavascriptExecutor javascriptExecutor;
 	private WebDriverWait waitExplicit;
+	private Date date;
 	
 
 	public void openUrl(WebDriver driver,String urlValue) {
@@ -205,11 +208,25 @@ public class AbstractPages {
 	}
 	
 	public boolean isElementDisplayed(WebDriver driver,String locator) {
-		return findElementByXpath(driver, locator).isDisplayed();
+		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+		try {
+			element = findElementByXpath(driver, locator);
+			overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+			return element.isDisplayed();
+		} catch (Exception ex) {
+			overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+			return false;
+		}
+		
 	}
 	
 	public boolean isElementDisplayed(WebDriver driver,String locator,String...values) {
-		return findElementByXpath(driver, locator , values).isDisplayed();
+		try {
+			element = findElementByXpath(driver, locator, values);
+			return element.isDisplayed();
+		} catch (Exception ex) {
+			return false;
+		}
 	}
 	
 	public boolean isElementSelected(WebDriver driver,String locator) {
@@ -329,11 +346,11 @@ public class AbstractPages {
 	
 	
 	
-	public void waitToElementInvisible(WebDriver driver,String locator) {
+	/*public void waitToElementInvisible(WebDriver driver,String locator) {
 		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		byLocator = By.xpath(locator);
 		waitExplicit.until(ExpectedConditions.invisibilityOfElementLocated(byLocator));
-	}
+	} */
 	
 	public void waitToAlertPresence(WebDriver driver,String locator) {
 		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
@@ -382,6 +399,82 @@ public class AbstractPages {
 	}
 	
 	
+	public void overrideGlobalTimeout(WebDriver driver , long timeOut) {
+		driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
+	
+	}
+	
+	
+	public void waitToElementInvisible(WebDriver driver, String locator) {
+		date = new Date();
+		By byLocator = By.xpath(locator);
+		waitExplicit = new WebDriverWait(driver, GlobalConstants.SHORT_TIMEOUT);
+		overrideGlobalTimeout(driver,GlobalConstants.SHORT_TIMEOUT);
+		try {
+			System.out.println("Start time for wait invisible = " + date.toString());
+			waitExplicit.until(ExpectedConditions.invisibilityOfElementLocated(byLocator));		
+		} catch(TimeoutException ex) {
+			ex.printStackTrace();
+			
+		}
+		
+		System.out.println("End time for wait invisible = " + new Date().toString());
+		overrideGlobalTimeout(driver,GlobalConstants.LONG_TIMEOUT);
+	}
+	
+	
+	public boolean isControlUndisplayed(WebDriver driver,String locator) {
+		date = new Date();
+		System.out.println("Start time = " + date.toString());
+		overrideGlobalTimeout(driver,GlobalConstants.SHORT_TIMEOUT);
+		List<WebElement> elements = driver.findElements(By.xpath(locator));
+		
+		if (elements.size() == 0) {
+			System.out.println("Element not in DOM");
+			System.out.println("End time = " + new Date().toString());
+			overrideGlobalTimeout(driver,GlobalConstants.LONG_TIMEOUT);
+			return true;
+		} else if(elements.size() > 0 && !elements.get(0).isDisplayed()) {
+			System.out.println("Element in DOM but not visible/displayed");
+			System.out.println("End time = " + new Date().toString());
+			overrideGlobalTimeout(driver,GlobalConstants.LONG_TIMEOUT);
+			return true;
+		} else {
+			System.out.println("Element in DOM and visible");
+			overrideGlobalTimeout(driver,GlobalConstants.LONG_TIMEOUT);
+			return false;
+		}
+
+	}
+	
+	
+	public boolean isControlUndisplayed(WebDriver driver,String locator,String...value) {
+		date = new Date();
+		System.out.println("Start time = " + date.toString());
+		overrideGlobalTimeout(driver,GlobalConstants.SHORT_TIMEOUT);
+		
+		locator = String.format(locator, (Object[]) value);
+		List<WebElement> elements = driver.findElements(By.xpath(locator));
+		
+		if(elements.size()== 0) {
+			System.out.println("Element not in DOM");
+			System.out.println("End time = " + new Date().toString());
+			overrideGlobalTimeout(driver,GlobalConstants.LONG_TIMEOUT);
+			return true;
+			
+		} else if(elements.size() > 0 && !elements.get(0).isDisplayed()) {
+			System.out.println("Element in DOM but not visible/displayed");
+			System.out.println("End time = " + new Date().toString());
+			overrideGlobalTimeout(driver,GlobalConstants.LONG_TIMEOUT);
+			return true;
+		} else {
+			System.out.println("Element in DOM and visible");
+			overrideGlobalTimeout(driver,GlobalConstants.LONG_TIMEOUT);
+			return false;
+		}
+	}
+	
+
 	// OPEN FOOTER PAGE
 	
 	public FooterMyAccountPageObject openFooterMyAccountPage(WebDriver driver) {

@@ -99,7 +99,27 @@ public class RegisterPageObject extends AbstractPages {
 	waitToElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
 	clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
 	return PageGeneratorManager.getHomePage(driver);
-	} 
+	}
+
+	public boolean isFirstnameTextboxDisplayed() {
+		waitToElementVisible(driver, "//input[@id='FirstName']");
+		return isElementDisplayed(driver,"//input[@id='FirstName']");
+		
+	}
+
+	public boolean isRequestVerifyTokenTextboxUndisplayed() {
+		waitToElementInvisible(driver, "//input[@name='__RequestVerificationToken']");
+		return isControlUndisplayed(driver,"//input[@name='__RequestVerificationToken']");
+	}
+	
+	public boolean isRequestVerifyTokenTextboxdisplayed() {
+		return isElementDisplayed(driver,"//input[@name='__RequestVerificationToken']");
+	}
+
+	public boolean isRegisterButtonUndisplayed() {
+		waitToElementInvisible(driver, "//input[@class='button-1 register-button']");
+		return isControlUndisplayed(driver, "//input[@name='__RequestVerificationToken']");
+	}
 	
 
 }
