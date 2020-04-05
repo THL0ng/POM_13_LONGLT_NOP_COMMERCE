@@ -8,5 +8,15 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="lib" path="LIB/selenium-server-standalone-3.141.59.jar"/>
 	<classpathentry kind="lib" path="LIB/testng-6.9.10.jar"/>
+	<classpathentry kind="lib" path="LIB/guice-3.0.jar"/>
+	<classpathentry kind="lib" path="LIB/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="LIB/reportng-1.1.4.jar"/>
+	<classpathentry kind="lib" path="LIB/velocity-1.4.jar"/>
+	<classpathentry kind="lib" path="LIB/commons-codec-1.11.jar"/>
+	<classpathentry kind="lib" path="LIB/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="LIB/commons-lang3-3.8.1.jar"/>
+	<classpathentry kind="lib" path="LIB/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="LIB/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
