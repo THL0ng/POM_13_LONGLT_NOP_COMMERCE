@@ -11,6 +11,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.grid.web.Values;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -143,6 +144,12 @@ public class AbstractPages {
 		select.selectByVisibleText(valueItem);
 	}
 	
+	public void selectItemInDropdown (WebDriver driver,String locator, String valueItem,String...values) {
+		element = findElementByXpath(driver, locator,values);
+		select = new Select(element);
+		select.selectByVisibleText(valueItem);
+	}
+	
 	public WebElement getSelectItemInDropdown (WebDriver driver,String locator) {
 		element = findElementByXpath(driver, locator);
 		select = new Select(element);
@@ -229,6 +236,15 @@ public class AbstractPages {
 		}
 	}
 	
+	public boolean isElementSelected(WebDriver driver,String locator,String...values) {
+		try {
+			element = findElementByXpath(driver, locator, values);
+			return element.isSelected();
+		} catch (Exception ex) {
+			return false;
+		}
+	}
+	
 	public boolean isElementSelected(WebDriver driver,String locator) {
 		return findElementByXpath(driver, locator).isSelected();
 	}
@@ -289,6 +305,14 @@ public class AbstractPages {
 		WebElement element = findElementByXpath(driver, locator);
 		action.moveToElement(element).perform();
 	}
+	
+	public void hoverMouseToElement(WebDriver driver,String locator,String... values) {
+		Actions action= new Actions(driver);
+		element = findElementByXpath(driver, locator,values);
+		action.moveToElement(element).perform();
+	}
+	
+	
 	
 	public void rightClick(WebDriver driver,String locator) {
 		Actions action= new Actions(driver);
@@ -524,6 +548,65 @@ public class AbstractPages {
 		clickToElement(driver, AbstractPageUI.DYNAMIC_FOOTER_LINK,pageName);		
 		
 	}
+	
+	public void openHeaderPageByName(WebDriver driver,String pageName) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_HEADER_LINK,pageName);	
+		clickToElement(driver, AbstractPageUI.DYNAMIC_HEADER_LINK,pageName);		
+		
+	}
+	
+	public void openHeaderMenuPageByName(WebDriver driver,String pageName) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK,pageName);	
+		clickToElement(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK,pageName);		
+		
+	}
+	
+	public void openHeaderSubMenuPageByName(WebDriver driver,String pageMenuName, String subMenuName) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK,pageMenuName);	
+		hoverMouseToElement(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK,pageMenuName);
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK,subMenuName);	
+		clickToElement(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK,subMenuName);		
+		
+	}
+	
+	public void inputToTextboxByID(WebDriver driver , String textboxID, String value) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX,textboxID);	
+		sendkeyToElement(driver, AbstractPageUI.DYNAMIC_TEXTBOX, value, textboxID);
+		
+	}
+	
+	public void clickToRadioButtonByID(WebDriver driver , String radioButtonID) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_RADIO_BUTTON,radioButtonID);	
+		clickToElement(driver, AbstractPageUI.DYNAMIC_RADIO_BUTTON,radioButtonID);		
+
+	}
+	
+	// status = true (click = check)/false (uncheck)
+	public void clickToCheckboxByID(WebDriver driver , String checkboxID, boolean status) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_CHECKBOX,checkboxID);
+		
+		//chọn rồi = true/ chưa chọn = false
+		boolean checkboxStatus = isElementSelected(driver, AbstractPageUI.DYNAMIC_CHECKBOX,checkboxID);
+		
+		if(checkboxStatus == status) {
+			clickToElement(driver, AbstractPageUI.DYNAMIC_CHECKBOX,checkboxID);		
+
+		}
+	}
+	
+	public void selectDropdownByName (WebDriver driver, String dropdownName, String value){
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_DROPDOWN,dropdownName);	
+		selectItemInDropdown(driver, AbstractPageUI.DYNAMIC_DROPDOWN, value, dropdownName);
+
+	}
+	
+	public void clickToButtonByValue(WebDriver driver , String buttonValue) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_BUTTON,buttonValue);	
+		clickToElement(driver, AbstractPageUI.DYNAMIC_BUTTON,buttonValue);		
+
+	}
+	
+	
 	
 }
 

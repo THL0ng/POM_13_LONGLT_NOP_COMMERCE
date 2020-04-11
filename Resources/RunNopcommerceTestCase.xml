@@ -20,7 +20,7 @@
   	<parameter name="browser" value="firefox"></parameter>
     <classes>
 	   	<class name="Com.nopcommerce.common.Common_01_RegisterToSystem"/>
-	    <class name="Com.nopcommerce_Login.Login_12_Register_ShareClassState"/>
+	    <class name="Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component"/>
     </classes>
   </test> 
    
