@@ -56,6 +56,38 @@ public class AbstractTest {
 		
 		return driver;
 	}
+	
+	public WebDriver getBrowserDriver(String browserName, String url) {
+		if(browserName.equalsIgnoreCase("chrome")) {
+			//System.setProperty("webdriver.chrome.driver", ".\\LIB\\chromedriver.exe");
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();		
+		} else if(browserName.equalsIgnoreCase("firefox")) {
+			//System.setProperty("webdriver.gecko.driver", ".\\LIB\\geckodriver.exe");
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();		
+		} else if(browserName.equalsIgnoreCase("headless_chrome")) {
+			//System.setProperty("webdriver.chrome.driver", ".\\LIB\\chromedriver.exe");
+			WebDriverManager.chromedriver().setup();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("headless");
+			options.addArguments("window-size=1920x1080");
+			driver = new ChromeDriver(options);
+			
+		} else if(browserName.equalsIgnoreCase("headless_firefox")) {
+			//System.setProperty("webdriver.gecko.driver", ".\\LIB\\geckodriver.exe");
+			WebDriverManager.firefoxdriver().setup();
+			FirefoxOptions options = new FirefoxOptions();
+			options.addArguments("--headless");
+			options.addArguments("window-size=1920x1080");
+			driver = new FirefoxDriver(options);
+		}
+
+		driver.get(url);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		
+		return driver;
+	}
 
 	private boolean checkTrue(boolean condition) {
 		boolean pass = true;

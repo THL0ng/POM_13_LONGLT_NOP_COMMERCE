@@ -1,4 +1,0 @@
-2020-04-11 11:41:04,010 INFO  Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component -  -------------------------- PASSED -------------------------- 
-2020-04-11 11:41:08,568 INFO  Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component -  -------------------------- PASSED -------------------------- 
-2020-04-11 11:41:08,569 INFO  Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component - OS name = windows 10
-2020-04-11 11:41:09,602 INFO  Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component - ---------- QUIT BROWSER SUCCESS ----------

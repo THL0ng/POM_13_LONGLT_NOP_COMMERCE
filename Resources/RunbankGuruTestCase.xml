@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Bank Guru" parallel="false">
+
+
+	<!-- 	GLOBAL DATA FOR SUITE -->
+  	<parameter name="browser" value="firefox"></parameter>
+
+
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<listener class-name="Commons.MethodListener" />
+		<listener class-name="reportConfig.ExtentTestListenerVersion4" />			
+					
+	</listeners>
+	
+	<parameter name="url" value="http://demo.guru99.com/v4/"></parameter>
+
+	
+ 
+  <test name="Run On FIREFOX">
+  	<parameter name="browser" value="firefox"></parameter>
+    <classes>
+	    <class name="Com.bankguru.payment.Payment_01_PaymentWorkflow"/>
+    </classes>
+  </test> 
+   
+</suite> 

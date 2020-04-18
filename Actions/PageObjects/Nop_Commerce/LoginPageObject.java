@@ -10,7 +10,6 @@ import PageUIs.Nop_Commerce.LoginPageUI;
 // PAGEOBJECTS CHỨA C�?C PAGE OBJECTS, MỖI PAGE SẼ CHỨA C�?C SỰ KIỆN LIÊN QUAN �?ẾN TC �?ANG VIẾT CỦA PAGE �?Ó
 public class LoginPageObject extends AbstractPages {
 	private WebDriver driver;
-	private WebDriverWait waitExplicit;
 	
 	public LoginPageObject(WebDriver _driver) {
 		driver = _driver;
@@ -19,7 +18,6 @@ public class LoginPageObject extends AbstractPages {
 	
 	public LoginPageObject (WebDriver _driver, WebDriverWait waitExplicit) {
 		driver = _driver;
-		this.waitExplicit = waitExplicit;
 		
 	}
 
@@ -28,12 +26,6 @@ public class LoginPageObject extends AbstractPages {
 		senkeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, emailValue);	
 	}
 
-
-	/*public HomePageObject clickToLoginButton() {
-		waitToElementClickable(driver, LoginPageUI.LOGIN_BUTTON);
-		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);	
-		return new HomePageObject(driver);
-	} */
 	
 	// DÙNG GENERATOR MANGAER
 	public HomePageObject clickToLoginButton() {
