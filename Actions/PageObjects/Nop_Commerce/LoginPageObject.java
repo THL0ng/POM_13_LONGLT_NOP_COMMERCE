@@ -23,7 +23,7 @@ public class LoginPageObject extends AbstractPages {
 
 	public void inputToEmailTextbox(String emailValue) {
 		waitToElementDisplayed(driver, LoginPageUI.EMAIL_TEXTBOX);
-		senkeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, emailValue);	
+		sendkeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, emailValue);	
 	}
 
 	
@@ -36,7 +36,7 @@ public class LoginPageObject extends AbstractPages {
 
 	public void inputToPasswordTextBox(String passwordValue) {
 		waitToElementDisplayed(driver, LoginPageUI.PASSWORD_TEXTBOX);
-		senkeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, passwordValue);		
+		sendkeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, passwordValue);		
 	}
 
 }

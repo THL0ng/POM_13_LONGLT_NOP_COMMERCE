@@ -45,9 +45,9 @@ public class Login_02_RegisterAndLogin2_AbstractPage_02_Extends extends Abstract
 	  //click male radio button
 	  clickToElement(driver,"//input[@id='gender-male']");
 	  //driver.findElement(By.cssSelector("#gender-male")).click();
-	  senkeyToElement(driver,"//input[@id='FirstName']", "corona");
+	  sendkeyToElement(driver,"//input[@id='FirstName']", "corona");
 	  //driver.findElement(By.cssSelector("#FirstName")).sendKeys("corona");
-	  senkeyToElement(driver,"//input[@id='LastName']","virus");
+	  sendkeyToElement(driver,"//input[@id='LastName']","virus");
 	  //driver.findElement(By.cssSelector("#LastName")).sendKeys("virus");
 	  
 	  
@@ -63,13 +63,13 @@ public class Login_02_RegisterAndLogin2_AbstractPage_02_Extends extends Abstract
 	  //select = new Select(driver.findElement(By.cssSelector("select[name='DateOfBirthYear']")));
 	  //select.selectByVisibleText("1986");
 	  
-	  senkeyToElement(driver,"//input[@id='Email']", email);
+	  sendkeyToElement(driver,"//input[@id='Email']", email);
 	  //driver.findElement(By.cssSelector("#Email")).sendKeys(email);
-	  senkeyToElement(driver,"//input[@id='Company']", "corona virus");
+	  sendkeyToElement(driver,"//input[@id='Company']", "corona virus");
 	  //driver.findElement(By.cssSelector("#Company")).sendKeys("corona virus");
-	 senkeyToElement(driver,"//input[@id='Password']", password);
+	 sendkeyToElement(driver,"//input[@id='Password']", password);
 	  // driver.findElement(By.cssSelector("#Password")).sendKeys(password);
-	  senkeyToElement(driver,"//input[@id='ConfirmPassword']", password);
+	  sendkeyToElement(driver,"//input[@id='ConfirmPassword']", password);
 	  //driver.findElement(By.cssSelector("#ConfirmPassword")).sendKeys(password);
 	  clickToElement(driver,"//input[@id='register-button']");
 	  //driver.findElement(By.cssSelector("#register-button")).click();
@@ -85,9 +85,9 @@ public class Login_02_RegisterAndLogin2_AbstractPage_02_Extends extends Abstract
   public void TC_02_LoginToSystem() {
 	  clickToElement(driver,"//a[@class='ico-login']");
 	  //driver.findElement(By.cssSelector(".ico-login")).click();
-	  senkeyToElement(driver,"//input[@id='Email']", email);
+	  sendkeyToElement(driver,"//input[@id='Email']", email);
 	  //driver.findElement(By.cssSelector("#Email")).sendKeys(email);
-	  senkeyToElement(driver,"//input[@id='Password']", password);
+	  sendkeyToElement(driver,"//input[@id='Password']", password);
 	  //driver.findElement(By.cssSelector("#Password")).sendKeys(password);
 	  clickToElement(driver,"//input[@class='button-1 login-button']");
 	  //driver.findElement(By.cssSelector(".login-button")).click();

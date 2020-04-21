@@ -22,13 +22,13 @@ public class RegisterPageObject extends AbstractPages {
 
 	public void inputToFirstNameTextbox(String firstNameValue) {
 		waitToElementDisplayed(driver, RegisterPageUI.FIRST_NAME_TEXTBOX);
-		senkeyToElement(driver, RegisterPageUI.FIRST_NAME_TEXTBOX,firstNameValue);
+		sendkeyToElement(driver, RegisterPageUI.FIRST_NAME_TEXTBOX,firstNameValue);
 		
 	}
 
 	public void inputToLastNameTextbox(String lastNameValue) {
 		waitToElementDisplayed(driver, RegisterPageUI.LAST_NAME_TEXTBOX);
-		senkeyToElement(driver, RegisterPageUI.LAST_NAME_TEXTBOX,lastNameValue);
+		sendkeyToElement(driver, RegisterPageUI.LAST_NAME_TEXTBOX,lastNameValue);
 		
 	}
 
@@ -54,25 +54,25 @@ public class RegisterPageObject extends AbstractPages {
 
 	public void inputToEmailTextbox(String emailValue) {
 		waitToElementDisplayed(driver, RegisterPageUI.EMAIL_TEXTBOX);
-		senkeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX,emailValue);
+		sendkeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX,emailValue);
 		
 	}
 
 	public void inputToCompanyextbox(String companyValue) {
 		waitToElementDisplayed(driver, RegisterPageUI.COMPANY_TEXTBOX);
-		senkeyToElement(driver, RegisterPageUI.COMPANY_TEXTBOX,companyValue);
+		sendkeyToElement(driver, RegisterPageUI.COMPANY_TEXTBOX,companyValue);
 		
 	}
 
 	public void inputToPasswordTextbox(String passwordValue) {
 		waitToElementDisplayed(driver, RegisterPageUI.PASSWORD_TEXTOBX);
-		senkeyToElement(driver, RegisterPageUI.PASSWORD_TEXTOBX,passwordValue);
+		sendkeyToElement(driver, RegisterPageUI.PASSWORD_TEXTOBX,passwordValue);
 		
 	}
 
 	public void inputToConfirmPasswordTextbox(String confirmPasswordValue) {
 		waitToElementDisplayed(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
-		senkeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX,confirmPasswordValue);
+		sendkeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX,confirmPasswordValue);
 		
 	}
 
@@ -109,7 +109,7 @@ public class RegisterPageObject extends AbstractPages {
 
 	public boolean isRequestVerifyTokenTextboxUndisplayed() {
 		waitToElementInvisible(driver, "//input[@name='__RequestVerificationToken']");
-		return isControlUndisplayed(driver,"//input[@name='__RequestVerificationToken']");
+		return isElementUndisplayed(driver,"//input[@name='__RequestVerificationToken']");
 	}
 	
 	public boolean isRequestVerifyTokenTextboxdisplayed() {
@@ -118,7 +118,7 @@ public class RegisterPageObject extends AbstractPages {
 
 	public boolean isRegisterButtonUndisplayed() {
 		waitToElementInvisible(driver, "//input[@class='button-1 register-button']");
-		return isControlUndisplayed(driver, "//input[@name='__RequestVerificationToken']");
+		return isElementUndisplayed(driver, "//input[@name='__RequestVerificationToken']");
 	}
 	
 

@@ -14,12 +14,12 @@ public class LoginPageObject extends AbstractPages{
 	}
 	public void inputToEmailTextbox(String email) {
 		waitToElementDisplayed(driver, LoginPageUI.EMAIL_TEXTBOX);
-		senkeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, email);
+		sendkeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, email);
 		
 	}
 	public void inputToPasswordTextbox(String password) {
 		waitToElementDisplayed(driver, LoginPageUI.PASSWORD_TEXTBOX);
-		senkeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);		
+		sendkeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);		
 	}
 	public MyDashBoardPageObject clickToLoginButton() {
 		waitToElementClickable(driver,LoginPageUI.LOGIN_BUTTON);

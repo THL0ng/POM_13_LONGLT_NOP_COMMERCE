@@ -3,6 +3,7 @@ package PageObjects.bankGuru;
 import org.openqa.selenium.WebDriver;
 
 import Commons.AbstractPages;
+import PageUIs.bankGuru.RegisterPageUI;
 
 public class RegisterPageObject extends AbstractPages {
 	WebDriver driver;
@@ -12,29 +13,30 @@ public class RegisterPageObject extends AbstractPages {
 		
 	}
 
-	public void inputToEmailTextbox(String string) {
-		// TODO Auto-generated method stub
-		
+	public void inputToEmailTextbox(String emailValue) {
+		waitToElementClickable(driver, RegisterPageUI.EMAIL_ID_TXT);
+		sendkeyToElement(driver, RegisterPageUI.EMAIL_ID_TXT, emailValue);
 	}
 
 	public void clickToSubmitButton() {
-		// TODO Auto-generated method stub
+		waitToElementClickable(driver, RegisterPageUI.SUBMIT_BTN);
+		clickToElement(driver, RegisterPageUI.SUBMIT_BTN);
 		
 	}
 
 	public String getUserIDValue() {
-		// TODO Auto-generated method stub
-		return null;
+		waitToElementInvisible(driver, RegisterPageUI.USER_ID_TEXT);
+		return getTextlement(driver,  RegisterPageUI.USER_ID_TEXT);
 	}
 
 	public String getPasswordValue() {
-		// TODO Auto-generated method stub
-		return null;
+		waitToElementInvisible(driver, RegisterPageUI.PASSWORD_ID_TEXT);
+		return getTextlement(driver,  RegisterPageUI.PASSWORD_ID_TEXT);
 	}
 
 	public LoginPageObject openLoginPage(String loginPageUrl) {
-		// TODO Auto-generated method stub
-		return null;
+		openUrl(driver,loginPageUrl);
+		return PageGeneratorManager.getLoginPage(driver);
 	}
 
 }

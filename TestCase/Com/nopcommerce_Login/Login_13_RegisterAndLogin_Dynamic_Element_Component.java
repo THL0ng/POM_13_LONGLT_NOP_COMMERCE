@@ -36,28 +36,28 @@ public class Login_13_RegisterAndLogin_Dynamic_Element_Component extends Abstrac
 	  homePage.openHeaderPageByName(driver, "Register");
 	  registerPage = PageGeneratorManager.getRegisterPage(driver);
 	  
-	  registerPage.clickToRadioButtonByID(driver, "gender-male");	
-	  registerPage.inputToTextboxByID(driver, "FirstName", "shen");
-	  registerPage.inputToTextboxByID(driver, "LastName", "long");
+	  registerPage.clickToNopCommerceRadioButtonByID(driver, "gender-male");	
+	  registerPage.inputToNopCommerceTextboxByID(driver, "FirstName", "shen");
+	  registerPage.inputToNopCommerceTextboxByID(driver, "LastName", "long");
 
-	  registerPage.selectDropdownByName(driver, "DateOfBirthDay", "8");
-	  registerPage.selectDropdownByName(driver, "DateOfBirthMonth", "August");
-	  registerPage.selectDropdownByName(driver, "DateOfBirthYear", "2000");
+	  registerPage.selectNopCommerceDropdownByName(driver, "DateOfBirthDay", "8");
+	  registerPage.selectNopCommerceDropdownByName(driver, "DateOfBirthMonth", "August");
+	  registerPage.selectNopCommerceDropdownByName(driver, "DateOfBirthYear", "2000");
 
-	  registerPage.inputToTextboxByID(driver, "Email", email);
-	  registerPage.inputToTextboxByID(driver, "Company", "Auto channel");
+	  registerPage.inputToNopCommerceTextboxByID(driver, "Email", email);
+	  registerPage.inputToNopCommerceTextboxByID(driver, "Company", "Auto channel");
 	  
 	  // CLICK( Select)
-	  registerPage.clickToCheckboxByID(driver, "Newsletter", true);
+	  registerPage.clickToNopCommerceCheckboxByID(driver, "Newsletter", true);
 	  
 	  // CLICK( Deselect)
-	  registerPage.clickToCheckboxByID(driver, "Newsletter", false);
+	  registerPage.clickToNopCommerceCheckboxByID(driver, "Newsletter", false);
 	  
-	  registerPage.inputToTextboxByID(driver, "Password", password);
-	  registerPage.inputToTextboxByID(driver, "ConfirmPassword", password);
+	  registerPage.inputToNopCommerceTextboxByID(driver, "Password", password);
+	  registerPage.inputToNopCommerceTextboxByID(driver, "ConfirmPassword", password);
 
 	 
-	  registerPage.clickToButtonByValue(driver, "Register");
+	  registerPage.clickToNopCommerceButtonByValue(driver, "Register");
 	  registerSuccessMsg = registerPage.getRegisterSuccessMessage();
 	  verifyEquals(registerSuccessMsg, "Your registration completed");
 	  registerPage.openHeaderPageByName(driver, "Log out");
@@ -70,10 +70,10 @@ public class Login_13_RegisterAndLogin_Dynamic_Element_Component extends Abstrac
 	  homePage.openHeaderPageByName(driver, "Log in");
 	  loginPage = PageGeneratorManager.getLoginPage(driver);
 	 
-	  loginPage.inputToTextboxByID(driver, "Email", email);
-	  loginPage.inputToTextboxByID(driver, "Password", password);
+	  loginPage.inputToNopCommerceTextboxByID(driver, "Email", email);
+	  loginPage.inputToNopCommerceTextboxByID(driver, "Password", password);
 
-	 loginPage.clickToButtonByValue(driver, "Log in");
+	 loginPage.clickToNopCommerceButtonByValue(driver, "Log in");
 	 homePage = PageGeneratorManager.getHomePage(driver);
 	  verifyTrue(homePage.isMyAccountLinkDisplayed());	  
 	 

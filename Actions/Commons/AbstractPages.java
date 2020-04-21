@@ -21,7 +21,8 @@ import PageObjects.Nop_Commerce.FooterMyAccountPageObject;
 import PageObjects.Nop_Commerce.FooterNewProductPageObject;
 import PageObjects.Nop_Commerce.FooterSearchPageObject;
 import PageObjects.Nop_Commerce.HomePageObject;
-import PageUIs.Nop_Commerce.AbstractPageUI;
+import PageUIs.Nop_Commerce.AbstractNopCommercePageUI;
+import PageUIs.bankGuru.AbstractBankPageUI;
 
 
 public class AbstractPages {
@@ -33,12 +34,12 @@ public class AbstractPages {
 	private JavascriptExecutor javascriptExecutor;
 	private WebDriverWait waitExplicit;
 	private Date date;
+	private JavascriptExecutor js;
 	
 
 	public void openUrl(WebDriver driver,String urlValue) {
 		driver.get(urlValue);
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+
 	}
 	
 	
@@ -180,7 +181,7 @@ public class AbstractPages {
 		}
 	}
 	
-	public void senkeyToElement(WebDriver driver,String locator , String value) {
+	public void sendkeyToElement(WebDriver driver,String locator , String value) {
 		findElementByXpath(driver, locator).clear();
 		findElementByXpath(driver, locator).sendKeys(value);
 		try {
@@ -236,6 +237,24 @@ public class AbstractPages {
 		}
 	}
 	
+	public boolean isElementEnabled(WebDriver driver,String locator) {
+		try {
+			element = findElementByXpath(driver, locator);
+			return element.isEnabled();
+		} catch (Exception ex) {
+			return false;
+		}
+	}
+	
+	public boolean isElementEnabled(WebDriver driver,String locator,String...values) {
+		try {
+			element = findElementByXpath(driver, locator, values);
+			return element.isEnabled();
+		} catch (Exception ex) {
+			return false;
+		}
+	}
+	
 	public boolean isElementSelected(WebDriver driver,String locator,String...values) {
 		try {
 			element = findElementByXpath(driver, locator, values);
@@ -249,9 +268,6 @@ public class AbstractPages {
 		return findElementByXpath(driver, locator).isSelected();
 	}
 	
-	public boolean isElementEnabled(WebDriver driver,String locator) {
-		return findElementByXpath(driver, locator).isEnabled();
-	}
 	
 	public void switchToWindowsbyID (WebDriver driver,String parentID) {
 		Set<String> allWindows = driver.getWindowHandles();
@@ -447,7 +463,7 @@ public class AbstractPages {
 	}
 	
 	
-	public boolean isControlUndisplayed(WebDriver driver,String locator) {
+	public boolean isElementUndisplayed(WebDriver driver,String locator) {
 		date = new Date();
 		System.out.println("Start time = " + date.toString());
 		overrideGlobalTimeout(driver,GlobalConstants.SHORT_TIMEOUT);
@@ -472,7 +488,7 @@ public class AbstractPages {
 	}
 	
 	
-	public boolean isControlUndisplayed(WebDriver driver,String locator,String...value) {
+	public boolean isElementUndisplayed(WebDriver driver,String locator,String...value) {
 		date = new Date();
 		System.out.println("Start time = " + date.toString());
 		overrideGlobalTimeout(driver,GlobalConstants.SHORT_TIMEOUT);
@@ -498,40 +514,54 @@ public class AbstractPages {
 		}
 	}
 	
+	public void removeAttributeInDOM(WebDriver driver, String locator, String attributeRemove) {
+		js = (JavascriptExecutor) driver;
+		element = findElementByXpath(driver,locator);
+		js.executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", element);
+	}
+	
+	
+	public void removeAttributeInDOM(WebDriver driver, String locator, String attributeRemove, String...values) {
+		js = (JavascriptExecutor) driver;
+		element = findElementByXpath(driver,locator,values);
+		js.executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", element);
+		sleepInSecond(1);
+	}
+	
 
 	// OPEN FOOTER PAGE
 	
 	public FooterMyAccountPageObject openFooterMyAccountPage(WebDriver driver) {
-		waitToElementVisible(driver,AbstractPageUI.FOOTER_MY_ACCOUNT_LINK);
-		clickToElement(driver, AbstractPageUI.FOOTER_MY_ACCOUNT_LINK);		
+		waitToElementVisible(driver,AbstractNopCommercePageUI.FOOTER_MY_ACCOUNT_LINK);
+		clickToElement(driver, AbstractNopCommercePageUI.FOOTER_MY_ACCOUNT_LINK);		
 		return PageGeneratorManager.getFooterMyAccountPage(driver);
 	}
 
 
 	public FooterSearchPageObject openFooterSearchPage(WebDriver driver) {
-		waitToElementVisible(driver,AbstractPageUI.FOOTER_SEARCH_LINK);
-		clickToElement(driver, AbstractPageUI.FOOTER_SEARCH_LINK);		
+		waitToElementVisible(driver,AbstractNopCommercePageUI.FOOTER_SEARCH_LINK);
+		clickToElement(driver, AbstractNopCommercePageUI.FOOTER_SEARCH_LINK);		
 		return PageGeneratorManager.getFooterSearchPage(driver);
 	}
 	
 
 	public HomePageObject openHomePage(WebDriver driver) {	
-		waitToElementVisible(driver,AbstractPageUI.HOME_PAGE_LINK);
-		clickToElement(driver, AbstractPageUI.HOME_PAGE_LINK);		
+		waitToElementVisible(driver,AbstractNopCommercePageUI.HOME_PAGE_LINK);
+		clickToElement(driver, AbstractNopCommercePageUI.HOME_PAGE_LINK);		
 		return PageGeneratorManager.getHomePage(driver);
 		
 	}
 	
 	public FooterNewProductPageObject openFooterNewProductPage(WebDriver driver) {
-		waitToElementVisible(driver, AbstractPageUI.FOOTER_NEW_PRODUCT_LINK);	
-		clickToElement(driver, AbstractPageUI.FOOTER_NEW_PRODUCT_LINK);		
+		waitToElementVisible(driver, AbstractNopCommercePageUI.FOOTER_NEW_PRODUCT_LINK);	
+		clickToElement(driver, AbstractNopCommercePageUI.FOOTER_NEW_PRODUCT_LINK);		
 		return PageGeneratorManager.getFooterNewProductPage(driver);
 	}
 	
 	// TRONG TRƯỜNG HỢP MÀ APPLICATION ÍT PAGE (10-15)
 	public AbstractPages openFooterPageByName(WebDriver driver,String pageName) {
-		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_FOOTER_LINK,pageName);	
-		clickToElement(driver, AbstractPageUI.DYNAMIC_FOOTER_LINK,pageName);		
+		waitToElementVisible(driver, AbstractNopCommercePageUI.DYNAMIC_FOOTER_LINK,pageName);	
+		clickToElement(driver, AbstractNopCommercePageUI.DYNAMIC_FOOTER_LINK,pageName);		
 		switch (pageName) {
 		case "Search":		
 			return PageGeneratorManager.getFooterSearchPage(driver);
@@ -544,67 +574,122 @@ public class AbstractPages {
 
 	// TRONG TRƯỜNG HỢP MÀ APPLICATION NHIỀU PAGE(N)
 	public void openFooterPagesByName(WebDriver driver,String pageName) {
-		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_FOOTER_LINK,pageName);	
-		clickToElement(driver, AbstractPageUI.DYNAMIC_FOOTER_LINK,pageName);		
+		waitToElementVisible(driver, AbstractNopCommercePageUI.DYNAMIC_FOOTER_LINK,pageName);	
+		clickToElement(driver, AbstractNopCommercePageUI.DYNAMIC_FOOTER_LINK,pageName);		
 		
 	}
 	
 	public void openHeaderPageByName(WebDriver driver,String pageName) {
-		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_HEADER_LINK,pageName);	
-		clickToElement(driver, AbstractPageUI.DYNAMIC_HEADER_LINK,pageName);		
+		waitToElementVisible(driver, AbstractNopCommercePageUI.DYNAMIC_HEADER_LINK,pageName);	
+		clickToElement(driver, AbstractNopCommercePageUI.DYNAMIC_HEADER_LINK,pageName);		
 		
 	}
 	
 	public void openHeaderMenuPageByName(WebDriver driver,String pageName) {
-		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK,pageName);	
-		clickToElement(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK,pageName);		
+		waitToElementVisible(driver, AbstractNopCommercePageUI.DYNAMIC_HEADER_MENU_LINK,pageName);	
+		clickToElement(driver, AbstractNopCommercePageUI.DYNAMIC_HEADER_MENU_LINK,pageName);		
 		
 	}
 	
 	public void openHeaderSubMenuPageByName(WebDriver driver,String pageMenuName, String subMenuName) {
-		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK,pageMenuName);	
-		hoverMouseToElement(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK,pageMenuName);
-		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK,subMenuName);	
-		clickToElement(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK,subMenuName);		
+		waitToElementVisible(driver, AbstractNopCommercePageUI.DYNAMIC_HEADER_MENU_LINK,pageMenuName);	
+		hoverMouseToElement(driver, AbstractNopCommercePageUI.DYNAMIC_HEADER_MENU_LINK,pageMenuName);
+		waitToElementVisible(driver, AbstractNopCommercePageUI.DYNAMIC_HEADER_MENU_LINK,subMenuName);	
+		clickToElement(driver, AbstractNopCommercePageUI.DYNAMIC_HEADER_MENU_LINK,subMenuName);		
 		
 	}
 	
-	public void inputToTextboxByID(WebDriver driver , String textboxID, String value) {
-		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX,textboxID);	
-		sendkeyToElement(driver, AbstractPageUI.DYNAMIC_TEXTBOX, value, textboxID);
+	public void inputToNopCommerceTextboxByID(WebDriver driver , String textboxID, String value) {
+		waitToElementVisible(driver, AbstractNopCommercePageUI.DYNAMIC_TEXTBOX,textboxID);	
+		sendkeyToElement(driver, AbstractNopCommercePageUI.DYNAMIC_TEXTBOX, value, textboxID);
 		
 	}
 	
-	public void clickToRadioButtonByID(WebDriver driver , String radioButtonID) {
-		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_RADIO_BUTTON,radioButtonID);	
-		clickToElement(driver, AbstractPageUI.DYNAMIC_RADIO_BUTTON,radioButtonID);		
+	public void clickToNopCommerceRadioButtonByID(WebDriver driver , String radioButtonID) {
+		waitToElementVisible(driver, AbstractNopCommercePageUI.DYNAMIC_RADIO_BUTTON,radioButtonID);	
+		clickToElement(driver, AbstractNopCommercePageUI.DYNAMIC_RADIO_BUTTON,radioButtonID);		
 
 	}
 	
 	// status = true (click = check)/false (uncheck)
-	public void clickToCheckboxByID(WebDriver driver , String checkboxID, boolean status) {
-		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_CHECKBOX,checkboxID);
+	public void clickToNopCommerceCheckboxByID(WebDriver driver , String checkboxID, boolean status) {
+		waitToElementVisible(driver, AbstractNopCommercePageUI.DYNAMIC_CHECKBOX,checkboxID);
 		
 		//chọn rồi = true/ chưa chọn = false
-		boolean checkboxStatus = isElementSelected(driver, AbstractPageUI.DYNAMIC_CHECKBOX,checkboxID);
+		boolean checkboxStatus = isElementSelected(driver, AbstractNopCommercePageUI.DYNAMIC_CHECKBOX,checkboxID);
 		
 		if(checkboxStatus == status) {
-			clickToElement(driver, AbstractPageUI.DYNAMIC_CHECKBOX,checkboxID);		
+			clickToElement(driver, AbstractNopCommercePageUI.DYNAMIC_CHECKBOX,checkboxID);		
 
 		}
 	}
 	
-	public void selectDropdownByName (WebDriver driver, String dropdownName, String value){
-		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_DROPDOWN,dropdownName);	
-		selectItemInDropdown(driver, AbstractPageUI.DYNAMIC_DROPDOWN, value, dropdownName);
+	public void selectNopCommerceDropdownByName (WebDriver driver, String dropdownName, String value){
+		waitToElementVisible(driver, AbstractNopCommercePageUI.DYNAMIC_DROPDOWN,dropdownName);	
+		selectItemInDropdown(driver, AbstractNopCommercePageUI.DYNAMIC_DROPDOWN, value, dropdownName);
 
 	}
 	
-	public void clickToButtonByValue(WebDriver driver , String buttonValue) {
-		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_BUTTON,buttonValue);	
-		clickToElement(driver, AbstractPageUI.DYNAMIC_BUTTON,buttonValue);		
+	public void clickToNopCommerceButtonByValue(WebDriver driver , String buttonValue) {
+		waitToElementVisible(driver, AbstractNopCommercePageUI.DYNAMIC_BUTTON,buttonValue);	
+		clickToElement(driver, AbstractNopCommercePageUI.DYNAMIC_BUTTON,buttonValue);		
 
 	}
+	
+	// DÙNG CHO BANK GURU
+	
+	public void openBankGuruPage(WebDriver driver , String pageName) {
+		waitToElementVisible(driver, AbstractBankPageUI.DYNAMIC_MENU_LINK,pageName);	
+		clickToElement(driver, AbstractBankPageUI.DYNAMIC_MENU_LINK,pageName);		
+		
+	}
+	
+	public void inputToBankGuruTextboxByName(WebDriver driver , String textboxName, String value) {
+		waitToElementVisible(driver, AbstractBankPageUI.DYNAMIC_TEXTBOX,textboxName);	
+		if(textboxName.contains("dob")) {
+			removeAttributeInDOM(driver, AbstractBankPageUI.DYNAMIC_TEXTBOX, "type", textboxName);
+		}
+		sendkeyToElement(driver, AbstractBankPageUI.DYNAMIC_TEXTBOX, value, textboxName);
+		
+	}
+	
+	public void inputToBankGuruTextAreaByName(WebDriver driver , String textAreaName, String value) {
+		waitToElementVisible(driver, AbstractBankPageUI.DYNAMIC_TEXTAREA,textAreaName);	
+		sendkeyToElement(driver, AbstractBankPageUI.DYNAMIC_TEXTAREA, value, textAreaName);
+		
+	}
+	
+	public void clickToBankGuruButtonByValue(WebDriver driver , String buttonValue) {
+		waitToElementClickable(driver, AbstractBankPageUI.DYNAMIC_BUTTON,buttonValue);	
+		clickToElement(driver, AbstractBankPageUI.DYNAMIC_BUTTON,buttonValue);
+		
+	}
+	
+	public void clickToBankGuruRadioButtonByValue(WebDriver driver , String radioButtonValue) {
+		waitToElementClickable(driver, AbstractBankPageUI.DYNAMIC_RADIO,radioButtonValue);	
+		clickToElement(driver, AbstractBankPageUI.DYNAMIC_RADIO,radioButtonValue);
+		
+	}
+	
+	public String getBankGuruHeaderText(WebDriver driver) {
+		waitToElementVisible(driver, AbstractBankPageUI.HEADING_TEXT);	
+		return getTextlement(driver, AbstractBankPageUI.HEADING_TEXT);
+		
+	}
+	
+	public String getBankGuruRowValueByRowName(WebDriver driver, String rowName) {
+		waitToElementVisible(driver, AbstractBankPageUI.DYNAMIC_ROW_NAME, rowName);	
+		return getTextlement(driver, AbstractBankPageUI.DYNAMIC_ROW_NAME, rowName);
+		
+	}
+	
+	public boolean isBankGuruTextboxEnabled(WebDriver driver,String textboxName) {
+		waitToElementVisible(driver, AbstractBankPageUI.DYNAMIC_TEXTBOX,textboxName);	
+		return isElementEnabled(driver, AbstractBankPageUI.DYNAMIC_TEXTBOX,textboxName);
+		
+	}
+	
+	
 	
 	
 	

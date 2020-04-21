@@ -1,6 +1,6 @@
 package PageUIs.Nop_Commerce;
 
-public class AbstractPageUI {
+public class AbstractNopCommercePageUI {
 	public static final String HOME_PAGE_LINK = "//div[@class='header-logo']//img";
 	
 	

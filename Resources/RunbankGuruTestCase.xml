@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Bank Guru" parallel="false">
 
-
-	<!-- 	GLOBAL DATA FOR SUITE -->
-  	<parameter name="browser" value="firefox"></parameter>
-
-
 	<listeners>
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
 		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />

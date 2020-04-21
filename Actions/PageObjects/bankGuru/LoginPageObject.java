@@ -3,6 +3,7 @@ package PageObjects.bankGuru;
 import org.openqa.selenium.WebDriver;
 
 import Commons.AbstractPages;
+import PageUIs.bankGuru.LoginPageUI;
 
 public class LoginPageObject extends AbstractPages {
 	WebDriver driver;
@@ -13,28 +14,29 @@ public class LoginPageObject extends AbstractPages {
 	}
 
 	public String getLoginPageUrl() {
-		// TODO Auto-generated method stub
-		return null;
+		return getCurrentPageUrl(driver) ;
 	}
 
 	public RegisterPageObject clickToHereLink() {
-		// TODO Auto-generated method stub
-		return null;
+		waitToElementClickable(driver, LoginPageUI.HERE_LINK);
+		clickToElement(driver, LoginPageUI.HERE_LINK);
+		return PageGeneratorManager.getRegisterPage(driver);
 	}
 
 	public void inputToUserIDTextbox(String userID) {
-		// TODO Auto-generated method stub
-		
+		waitToElementClickable(driver, LoginPageUI.USER_NAME_TXT);
+		sendkeyToElement(driver, LoginPageUI.USER_NAME_TXT, userID);
 	}
 
 	public void inputToPasswordTextbox(String password) {
-		// TODO Auto-generated method stub
-		
+		waitToElementClickable(driver, LoginPageUI.PASSWORD_TXT);
+		sendkeyToElement(driver, LoginPageUI.PASSWORD_TXT, password);		
 	}
 
 	public HomePageObject clickToLoginButton() {
-		// TODO Auto-generated method stub
-		return null;
+		waitToElementClickable(driver, LoginPageUI.LOGIN_BTN);
+		clickToElement(driver, LoginPageUI.LOGIN_BTN);
+		return PageGeneratorManager.getHomePage(driver);
 	}
 
 }
