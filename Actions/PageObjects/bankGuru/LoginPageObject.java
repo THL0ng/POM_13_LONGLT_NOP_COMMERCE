@@ -39,4 +39,10 @@ public class LoginPageObject extends AbstractPages {
 		return PageGeneratorManager.getHomePage(driver);
 	}
 
+	public HomePageObject loginAsUser(String userID, String password) {
+		inputToUserIDTextbox(userID);
+		inputToPasswordTextbox(password);
+		return clickToLoginButton();
+	}
+
 }

@@ -384,13 +384,10 @@ public class AbstractPages {
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(byLocator));
 	}
 	
-	
-	
-	/*public void waitToElementInvisible(WebDriver driver,String locator) {
+	public void waitAlertPresence(WebDriver driver) {
 		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-		byLocator = By.xpath(locator);
-		waitExplicit.until(ExpectedConditions.invisibilityOfElementLocated(byLocator));
-	} */
+		waitExplicit.until(ExpectedConditions.alertIsPresent());	
+	}	
 	
 	public void waitToAlertPresence(WebDriver driver,String locator) {
 		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
@@ -689,8 +686,20 @@ public class AbstractPages {
 		
 	}
 	
+	public void selectBankGuruDropdownItemByName(WebDriver driver, String dropdownName,String valueItem) {
+		waitToElementVisible(driver, AbstractBankPageUI.DYNAMIC_DROPDOWN,dropdownName);	
+		selectItemInDropdown(driver, AbstractBankPageUI.DYNAMIC_DROPDOWN, valueItem,dropdownName);
+	}
 	
-	
+	public boolean isAlertTextDisplayedAndAcceptAlert(WebDriver driver, String alertText) {
+		waitAlertPresence(driver);
+		String actualText = getTextAlert(driver);
+		sleepInSecond(1);
+		acceptAler(driver);
+		sleepInSecond(1);
+		return actualText.equals(alertText);
+	}
+		
 	
 	
 }

@@ -46,8 +46,8 @@ public class PageGeneratorManager {
 	}
 
 	
-	public static DepositePageObject getDepositPage(WebDriver driver) {
-		return new DepositePageObject(driver);
+	public static DepositPageObject getDepositPage(WebDriver driver) {
+		return new DepositPageObject(driver);
 	}
 
 	

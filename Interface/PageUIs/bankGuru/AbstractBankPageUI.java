@@ -24,6 +24,5 @@ public class AbstractBankPageUI {
 	
 	// ROW NAME
 	public static final String DYNAMIC_ROW_NAME = "//td[text()='%s']/following-sibling::td";
-
-
+	
 }
