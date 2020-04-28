@@ -3,12 +3,12 @@ package Com.nopcommerce_Login;
 import org.testng.annotations.Test;
 
 import Commons.AbstractTest;
-import Commons.PageGeneratorManager;
 import PageObjects.Nop_Commerce.FooterMyAccountPageObject;
 import PageObjects.Nop_Commerce.FooterNewProductPageObject;
 import PageObjects.Nop_Commerce.FooterSearchPageObject;
 import PageObjects.Nop_Commerce.HomePageObject;
 import PageObjects.Nop_Commerce.LoginPageObject;
+import PageObjects.Nop_Commerce.PageGeneratorManager;
 import PageObjects.Nop_Commerce.RegisterPageObject;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;

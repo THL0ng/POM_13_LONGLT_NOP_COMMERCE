@@ -3,7 +3,7 @@ package Com.bankguru.payment;
 import org.testng.annotations.Test;
 
 import Commons.AbstractTest;
-import Commons.PageGeneratorManager;
+import PageObjects.Nop_Commerce.PageGeneratorManager;
 import PageObjects.bankGuru.BalanceEnquiryPageObject;
 import PageObjects.bankGuru.DeleteAccountPageObject;
 import PageObjects.bankGuru.DeleteCustomerPageObject;

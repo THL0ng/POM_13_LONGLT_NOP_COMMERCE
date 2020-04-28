@@ -1,5 +1,7 @@
 package Commons;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -21,6 +23,7 @@ import PageObjects.Nop_Commerce.FooterMyAccountPageObject;
 import PageObjects.Nop_Commerce.FooterNewProductPageObject;
 import PageObjects.Nop_Commerce.FooterSearchPageObject;
 import PageObjects.Nop_Commerce.HomePageObject;
+import PageObjects.Nop_Commerce.PageGeneratorManager;
 import PageUIs.Nop_Commerce.AbstractNopCommercePageUI;
 import PageUIs.bankGuru.AbstractBankPageUI;
 
@@ -632,6 +635,167 @@ public class AbstractPages {
 		clickToElement(driver, AbstractNopCommercePageUI.DYNAMIC_BUTTON,buttonValue);		
 
 	}
+	
+	public boolean isNameDataSortedAscending(WebDriver driver) {
+		// KHAI BÁO 1 ARRAY LIST
+		ArrayList<String> arrayList= new ArrayList<String>();
+		
+		// TÌM TẤT CẢ ELEMENT MATCHING VS ĐIỀU KIỆN (NAME/PRICE/...)
+		List<WebElement>elementList = findElementsByXpath(driver, AbstractNopCommercePageUI.PRODUCT_TITLE);
+		// LẤY TEXT CỦA TỪNG ELEMENT ADD VÀO ARRAY LIST
+		for(WebElement element:elementList) {
+			arrayList.add(element.getText());
+		}
+		
+		System.out.println("-----DỮ LIỆU TRÊN UI-----");
+		for(String name: arrayList) {
+			System.out.println(name);
+		}
+		
+		// COPY QUA 1 ARRAY LIST MỚI ĐỂ SORT TRONG CODE
+		ArrayList<String>sortedList = new ArrayList<>();
+		for(String child:arrayList) {
+			sortedList.add(child);
+		}
+		
+		// THỰC HIỆN SORT ASC
+		Collections.sort(arrayList);
+		
+		System.out.println("----DỮ LIỆU ĐÃ SORT ASC TRONG CODE-----");
+		for(String name:arrayList) {
+			System.out.println(name);
+		}
+		
+		// VERIFY 2 ARRAY BẰNG NHAU - NẾU DỮ LIỆU SORT TRÊN UI KO CHÍNH XÁC THÌ KẾT QUẢ TRẢ VỀ SAI
+		return sortedList.equals(arrayList);
+	}
+	
+	
+	public boolean isNameDataSortedDescending(WebDriver driver) {
+		// KHAI BÁO 1 ARRAY LIST
+		ArrayList<String> arrayList= new ArrayList<String>();
+		
+		// TÌM TẤT CẢ ELEMENT MATCHING VS ĐIỀU KIỆN (NAME/PRICE/...)
+		List<WebElement>elementList = findElementsByXpath(driver, AbstractNopCommercePageUI.PRODUCT_TITLE);
+
+		
+		// LẤY TEXT CỦA TỪNG ELEMENT ADD VÀO ARRAY LIST
+		for(WebElement element:elementList) {
+			arrayList.add(element.getText());
+		}
+		
+		System.out.println("-----DỮ LIỆU TRÊN UI-----");
+		for(String name: arrayList) {
+			 System.out.println(name);
+		}
+		
+		// COPY QUA 1 ARRAY LIST MỚI ĐỂ SORT TRONG CODE
+		ArrayList<String>sortedList = new ArrayList<>();
+		for(String child:arrayList) {
+			sortedList.add(child);
+		}
+		
+		// THỰC HIỆN SORT ASC
+		Collections.sort(arrayList);
+		
+		System.out.println("----DỮ LIỆU ĐÃ SORT ASC TRONG CODE-----");
+		for(String name:arrayList) {
+			System.out.println(name);
+		}
+		
+		// REVERSE DATA ĐỂ SORT DESC ( DÙNG 1 TRONG 2 CÁCH BÊN DƯỚI )
+		Collections.reverse(arrayList);
+		// COLLECTIONS.SORT(ARRAYLIST , COLLECTIONS.REVERSEPRDER());
+		System.out.println("-----DỮ LIỆU ĐÃ SORT DESC TRONG CODE-----");
+		for(String name:arrayList) {
+			System.out.println(name);
+		}
+		
+		// VERIFY 2 ARRAY BẰNG NHAU-NẾU DỮ LIỆU SORT TRÊN UI KO CHÍNH XÁC THÌ KẾT QUẢ TRẢ VỀ SAI
+		return sortedList.equals(arrayList);
+	}
+	
+	public boolean isPriceSortedAscending(WebDriver driver) {
+		// KHAI BÁO 1 ARRAY LIST
+		ArrayList<Float> arrayList= new ArrayList<Float>();
+		
+		// TÌM TẤT CẢ ELEMENT MATCHING VS ĐIỀU KIỆN (NAME/PRICE/...)
+		List<WebElement>elementList = findElementsByXpath(driver, AbstractNopCommercePageUI.PRODUCT_PRICE);
+		// LẤY TEXT CỦA TỪNG ELEMENT ADD VÀO ARRAY LIST
+		for(WebElement element:elementList) {
+			arrayList.add(Float.parseFloat(element.getText().replace("$", "").replace(",", "").trim()));
+		}
+		
+		System.out.println("-----DỮ LIỆU TRÊN UI-----");
+		for(Float name: arrayList) {
+			System.out.println(name);
+		}
+		
+		// COPY QUA 1 ARRAY LIST MỚI ĐỂ SORT TRONG CODE
+		ArrayList<Float>sortedList = new ArrayList<Float>();
+		for(Float child:arrayList) {
+			sortedList.add(child);
+		}
+		
+		// THỰC HIỆN SORT ASC
+		Collections.sort(arrayList);
+		
+		System.out.println("----DỮ LIỆU ĐÃ SORT ASC TRONG CODE-----");
+		for(Float name:arrayList) {
+			System.out.println(name);
+		}
+		
+		// VERIFY 2 ARRAY BẰNG NHAU - NẾU DỮ LIỆU SORT TRÊN UI KO CHÍNH XÁC THÌ KẾT QUẢ TRẢ VỀ SAI
+		return sortedList.equals(arrayList);
+	}
+	
+	
+	public boolean isPriceSortedDescending(WebDriver driver) {
+		// KHAI BÁO 1 ARRAY LIST
+		ArrayList<Float> arrayList= new ArrayList<Float>();
+		
+		// TÌM TẤT CẢ ELEMENT MATCHING VS ĐIỀU KIỆN (NAME/PRICE/...)
+		List<WebElement>elementList = findElementsByXpath(driver, AbstractNopCommercePageUI.PRODUCT_PRICE);
+
+		
+		// LẤY TEXT CỦA TỪNG ELEMENT ADD VÀO ARRAY LIST
+		for(WebElement element:elementList) {
+			arrayList.add(Float.parseFloat(element.getText().replace("$", "").replace(",", "").trim()));
+		}
+		
+		System.out.println("-----DỮ LIỆU TRÊN UI-----");
+		for(Float name: arrayList) {
+			 System.out.println(name);
+		}
+		
+		// COPY QUA 1 ARRAY LIST MỚI ĐỂ SORT TRONG CODE
+		ArrayList<Float>sortedList = new ArrayList<Float>();
+		for(Float child:arrayList) {
+			sortedList.add(child);
+		}
+		
+		// THỰC HIỆN SORT ASC
+		Collections.sort(arrayList);
+		
+		System.out.println("----DỮ LIỆU ĐÃ SORT ASC TRONG CODE-----");
+		for(Float name:arrayList) {
+			System.out.println(name);
+		}
+		
+		// REVERSE DATA ĐỂ SORT DESC ( DÙNG 1 TRONG 2 CÁCH BÊN DƯỚI )
+		Collections.reverse(arrayList);
+		// COLLECTIONS.SORT(ARRAYLIST , COLLECTIONS.REVERSEPRDER());
+		System.out.println("-----DỮ LIỆU ĐÃ SORT DESC TRONG CODE-----");
+		for(Float name:arrayList) {
+			System.out.println(name);
+		}
+		
+		// VERIFY 2 ARRAY BẰNG NHAU-NẾU DỮ LIỆU SORT TRÊN UI KO CHÍNH XÁC THÌ KẾT QUẢ TRẢ VỀ SAI
+		return sortedList.equals(arrayList);
+	}
+	
+	
+	
 	
 	// DÙNG CHO BANK GURU
 	

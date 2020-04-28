@@ -3,7 +3,6 @@ package PageObjects.Nop_Commerce;
 import org.openqa.selenium.WebDriver;
 
 import Commons.AbstractPages;
-import Commons.PageGeneratorManager;
 import PageUIs.Nop_Commerce.FooterNewProductPageUI;
 import PageUIs.Nop_Commerce.HomePageUI;
 

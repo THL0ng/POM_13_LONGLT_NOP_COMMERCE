@@ -6,10 +6,10 @@ import Commons.AbstractPages;
 import PageUIs.Nop_Commerce.FooterMyAccountPageUI;
 import PageUIs.Nop_Commerce.FooterSearchPageUI;
 
-public class FooterSearchPageObject extends AbstractPages {
-private WebDriver driver;
+public class DesktopsPageObject extends AbstractPages {
+	WebDriver driver;
 	
-	public FooterSearchPageObject(WebDriver _driver) {
+	public DesktopsPageObject(WebDriver _driver) {
 		driver = _driver;
 		
 	}

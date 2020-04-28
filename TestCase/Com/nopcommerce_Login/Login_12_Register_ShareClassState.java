@@ -4,9 +4,10 @@ import org.testng.annotations.Test;
 
 import Com.nopcommerce.common.Common_01_RegisterToSystem;
 import Commons.AbstractTest;
-import Commons.PageGeneratorManager;
 import PageObjects.Nop_Commerce.HomePageObject;
 import PageObjects.Nop_Commerce.LoginPageObject;
+import PageObjects.Nop_Commerce.PageGeneratorManager;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.openqa.selenium.WebDriver;

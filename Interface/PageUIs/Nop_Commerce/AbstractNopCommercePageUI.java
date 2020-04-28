@@ -33,6 +33,12 @@ public class AbstractNopCommercePageUI {
 	
 	// Button
 	public static final String DYNAMIC_BUTTON = "//input[@value='%s']";
+	
+	// Product title
+	public static final String PRODUCT_TITLE = "//h2[@class='product-title']/a";
 
+
+	// Product price
+	public static final String PRODUCT_PRICE = "//div[@class='prices']//span";
 
 }

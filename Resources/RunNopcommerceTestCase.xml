@@ -19,8 +19,7 @@
   <test name="Run On FIREFOX">
   	<parameter name="browser" value="firefox"></parameter>
     <classes>
-	   	<class name="Com.nopcommerce.common.Common_01_RegisterToSystem"/>
-	    <class name="Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component"/>
+	    <class name="Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc"/>
     </classes>
   </test> 
    
