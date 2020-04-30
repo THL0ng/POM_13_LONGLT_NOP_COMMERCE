@@ -1,6 +1,0 @@
-2020-04-28 12:29:05,446 INFO  Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc -  -------------------------- PASSED -------------------------- 
-2020-04-28 12:29:08,105 INFO  Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc -  -------------------------- PASSED -------------------------- 
-2020-04-28 12:29:11,486 INFO  Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc -  -------------------------- PASSED -------------------------- 
-2020-04-28 12:29:14,098 INFO  Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc -  -------------------------- PASSED -------------------------- 
-2020-04-28 12:29:14,099 INFO  Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc - OS name = windows 10
-2020-04-28 12:29:15,156 INFO  Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc - ---------- QUIT BROWSER SUCCESS ----------

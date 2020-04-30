@@ -1,5 +1,9 @@
 package Commons;
 
+import java.io.File;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -8,6 +12,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
 import org.testng.Assert;
 import org.testng.Reporter;
 
@@ -21,21 +28,86 @@ import org.joda.time.DateTimeZone;
 public class AbstractTest {
 	private WebDriver driver;
 	protected final Log log;
+	private String rootFolder = System.getProperty("user.dir");
 	
 	public AbstractTest() {
 		log = LogFactory.getLog(getClass());
 		
 	}
 	
+	protected void printBrowserConsoleLogs(WebDriver driver) {
+		LogEntries logs = driver.manage().logs().get("browser");
+		List<LogEntry>logList = logs.getAll();
+		for(LogEntry logging : logList) {
+			log.info("-----"+ logging.getLevel().toString()+"-----\n" + logging.getMessage());
+		}
+	}
+	
 	public WebDriver getBrowserDriver(String browserName) {
 		if(browserName.equalsIgnoreCase("chrome")) {
 			//System.setProperty("webdriver.chrome.driver", ".\\LIB\\chromedriver.exe");
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();		
+			
+			System.setProperty("webdriver.chrome.args","--disable-logging");
+			System.setProperty("webdriver.chrome.silentOutput", "true");
+						
+			// CHỌN NGÔN NGỮ ĐỂ MỞ TRÌNH DUYỆT
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("-lang=vi");
+			
+			// TẮT INFOBAR
+			//options.addArguments("disable-infobars"); // KO ĐƯỢC THÌ DÙNG
+			options.setExperimentalOption("useAutomationExtension", false);
+			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+
+
+			// INSTALL PLUGIN FOR CHROME
+			File file = new File(rootFolder + "\\browserExtensions\\google_translate.crx");
+			options.addExtensions(file);			
+			// TẮT TIỆN ÍCH DEVELOPER MODE
+			options.addArguments("--disable-extensions");
+
+			// CHẠY ẨN DANH TRÊN CHROME
+			//options.addArguments("--incognito");
+			
+			// AUTO SAVE ON CHROME
+			HashMap<String,Object> chromePrefs = new HashMap<String,Object>();
+			chromePrefs.put("profile.default_content_settings.popups", 0);
+			chromePrefs.put("download.default_directory", rootFolder + "\\fileDownloaded");
+			options.setExperimentalOption("prefs", chromePrefs);
+
+			driver = new ChromeDriver(options);
+	
 		} else if(browserName.equalsIgnoreCase("firefox")) {
 			//System.setProperty("webdriver.gecko.driver", ".\\LIB\\geckodriver.exe");
 			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();		
+			
+			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,rootFolder + "\\LogBrowser\\Firefox.log");
+			
+			
+			// INSTALL PLUGIN FOR FIREFOX	
+			FirefoxProfile profile = new FirefoxProfile();
+			File translate = new File(rootFolder + "\\browserExtensions\\google_translate.xpi");
+			profile.addExtension(translate);
+			profile.setPreference("intl.accept_languages", "fr"); // CHƯA ĐỔI NGÔN NGỮ DC CHO FIREFOX
+			FirefoxOptions options = new FirefoxOptions();
+			options.setProfile(profile);
+			
+			// CHẠY ẨN DANH TRÊN FIREFOX
+			//options.addArguments("-private");
+			
+			
+			// AUTO SAVE ON FIREFOX
+			options.addPreference("browser.download.folderList", 2);
+			options.addPreference("browser.download.dir", rootFolder + "\\fileDownloaded");
+			options.addPreference("browser.download.useDownloadDir", true);
+			options.addPreference("browser.helperApps.neverAsk.saveToDisk","application/pdf");
+			options.addPreference("pdfjs.disabled", true);		
+			driver = new FirefoxDriver(options);
+
+			
+			
 		} else if(browserName.equalsIgnoreCase("headless_chrome")) {
 			//System.setProperty("webdriver.chrome.driver", ".\\LIB\\chromedriver.exe");
 			WebDriverManager.chromedriver().setup();

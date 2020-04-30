@@ -2,8 +2,7 @@
 <suite name="Nop Commerce" parallel="false">
 
 
-	<!-- 	GLOBAL DATA FOR SUITE -->
-  	<parameter name="browser" value="firefox"></parameter>
+
 
 
 	<listeners>
@@ -14,13 +13,21 @@
 					
 	</listeners>
 
-	
- 
+
   <test name="Run On FIREFOX">
   	<parameter name="browser" value="firefox"></parameter>
     <classes>
-	    <class name="Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc"/>
+	    <class name="Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component"/>
     </classes>
   </test> 
+  
+  <test name="Run On CHROME">
+  	<parameter name="browser" value="chrome"></parameter>
+    <classes>
+	    <class name="Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component"/>
+    </classes>
+  </test> 
+  
+
    
 </suite> 
