@@ -10,11 +10,14 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 
@@ -123,10 +126,29 @@ public class AbstractTest {
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
 			driver = new FirefoxDriver(options);
-		}
+		}  else if(browserName.equalsIgnoreCase("safari")) {
+			driver = new SafariDriver();
+		}	else if(browserName.equalsIgnoreCase("ie")) {
+			WebDriverManager.iedriver().arch32().setup();
+			driver = new InternetExplorerDriver();
+		} else if (browserName.equalsIgnoreCase("edge")) {
+			// EDGE HTML VERSION 18
+			// DÙNG COMMAND LINE
+			
+			// EDGE HTML VERSION < 18
+			// System.setProperty("webdriver.edge.driver",".\\LIB\\MicrosoftWebDriver.exe");
 
+			// EDGE LATEST VERSION
+			System.setProperty("webdriver.edge.driver",".\\LIB\\msedgedriver.exe");
+			driver = new EdgeDriver();
+
+		}
+		
+		
 		driver.get(GlobalConstants.DEV_URL);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+
 		
 		return driver;
 	}
@@ -155,10 +177,13 @@ public class AbstractTest {
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
 			driver = new FirefoxDriver(options);
+		} else if(browserName.equalsIgnoreCase("safari")) {
+			driver = new SafariDriver();
 		}
 
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
 		
 		return driver;
 	}
@@ -239,6 +264,7 @@ public class AbstractTest {
 			// Khai báo 1 biến command line để thực thi
 			String cmd = "";
 			if (driver != null) {
+				driver.manage().deleteAllCookies();
 				driver.quit();
 			}
 

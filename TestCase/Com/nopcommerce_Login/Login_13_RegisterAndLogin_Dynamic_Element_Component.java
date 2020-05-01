@@ -36,7 +36,7 @@ public class Login_13_RegisterAndLogin_Dynamic_Element_Component extends Abstrac
 	  homePage.openHeaderPageByName(driver, "Register");
 	  registerPage = PageGeneratorManager.getRegisterPage(driver);
 	  
-	  printBrowserConsoleLogs(driver);
+	  //printBrowserConsoleLogs(driver);
 	  
 	  registerPage.clickToNopCommerceRadioButtonByID(driver, "gender-male");	
 	  registerPage.inputToNopCommerceTextboxByID(driver, "FirstName", "shen");
@@ -61,7 +61,7 @@ public class Login_13_RegisterAndLogin_Dynamic_Element_Component extends Abstrac
 	 
 	  registerPage.clickToNopCommerceButtonByValue(driver, "Register");
 	  
-	  printBrowserConsoleLogs(driver);
+	  //printBrowserConsoleLogs(driver);
 
 	  registerSuccessMsg = registerPage.getRegisterSuccessMessage();
 	  verifyEquals(registerSuccessMsg, "Your registration completed");
@@ -75,14 +75,14 @@ public class Login_13_RegisterAndLogin_Dynamic_Element_Component extends Abstrac
 	  homePage.openHeaderPageByName(driver, "Log in");
 	  loginPage = PageGeneratorManager.getLoginPage(driver);
 	  
-	  printBrowserConsoleLogs(driver);
+	  //printBrowserConsoleLogs(driver);
  
 	  loginPage.inputToNopCommerceTextboxByID(driver, "Email", email);
 	  loginPage.inputToNopCommerceTextboxByID(driver, "Password", password);
 
 	 loginPage.clickToNopCommerceButtonByValue(driver, "Log in");
 	 
-	  printBrowserConsoleLogs(driver);
+	  //printBrowserConsoleLogs(driver);
 
 	  homePage = PageGeneratorManager.getHomePage(driver);
 	  verifyTrue(homePage.isMyAccountLinkDisplayed());	  

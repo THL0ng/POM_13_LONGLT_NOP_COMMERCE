@@ -135,11 +135,23 @@ public class AbstractPages {
 	}
 	
 	public void clickToElement(WebDriver driver,String locator) {
-		findElementByXpath(driver, locator).click();
+		element = findElementByXpath(driver,locator);
+		if(driver.toString().contains("internet explorer")) {
+			clickToElementByJS(driver, locator);
+			sleepInSecond(3);
+		} else {
+			element.click();
+		}
 	}
 	
 	public void clickToElement(WebDriver driver,String locator, String...values) {
-		findElementByXpath(driver,locator,values).click();
+		element = findElementByXpath(driver,locator,values);
+		if(driver.toString().contains("internet explorer")) {
+			clickToElementByJS(driver, locator,values);
+			sleepInSecond(3);
+		} else {
+			element.click();
+		}
 	}
 	
 	public void selectItemInDropdown (WebDriver driver,String locator, String valueItem) {
@@ -518,6 +530,18 @@ public class AbstractPages {
 		js = (JavascriptExecutor) driver;
 		element = findElementByXpath(driver,locator);
 		js.executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", element);
+	}
+	
+	public void clickToElementByJS(WebDriver driver, String locator) {
+		js = (JavascriptExecutor) driver;
+		element = findElementByXpath(driver,locator);
+		js.executeScript("arguments[0].click();", element);
+	}
+	
+	public void clickToElementByJS(WebDriver driver, String locator,String...values) {
+		js = (JavascriptExecutor) driver;
+		element = findElementByXpath(driver,locator,values);
+		js.executeScript("arguments[0].click();", element);
 	}
 	
 	

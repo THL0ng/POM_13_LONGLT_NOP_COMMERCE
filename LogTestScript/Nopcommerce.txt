@@ -1,0 +1,3 @@
+2020-05-01 12:07:56,269 INFO  Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-05-01 12:08:40,845 INFO  Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component - OS name = windows 10
+2020-05-01 12:08:41,485 INFO  Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component - Empty command
