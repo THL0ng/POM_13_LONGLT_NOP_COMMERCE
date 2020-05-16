@@ -1,3 +1,4 @@
-2020-05-01 12:07:56,269 INFO  Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component -  -------------------------- PASSED -------------------------- 
-2020-05-01 12:08:40,845 INFO  Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component - OS name = windows 10
-2020-05-01 12:08:41,485 INFO  Com.nopcommerce_Login.Login_13_RegisterAndLogin_Dynamic_Element_Component - Empty command
+2020-05-16 10:52:38,045 INFO  Com.nopcommerce_Login.Login_15_Data_Faker -  -------------------------- PASSED -------------------------- 
+2020-05-16 10:52:43,031 INFO  Com.nopcommerce_Login.Login_15_Data_Faker -  -------------------------- PASSED -------------------------- 
+2020-05-16 10:52:43,033 INFO  Com.nopcommerce_Login.Login_15_Data_Faker - OS name = windows 10
+2020-05-16 10:52:43,899 INFO  Com.nopcommerce_Login.Login_15_Data_Faker - ---------- QUIT BROWSER SUCCESS ----------
