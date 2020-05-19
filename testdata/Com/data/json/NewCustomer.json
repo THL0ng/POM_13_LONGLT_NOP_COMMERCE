@@ -1,0 +1,13 @@
+{
+	"firstname": "Shen Long",
+	"lastname":"SHEN",
+	"dob": "10/10/2010",
+	"address": "123 Le Hong Phong",
+	"cc": {
+		"number": "8888-8888-9999-9999",
+		"billing": "123 Le Duan"
+	},
+	"product": {
+		"searchCriteria": "criteria"
+	}
+}
