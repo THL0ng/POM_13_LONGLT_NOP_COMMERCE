@@ -13,8 +13,8 @@
 
 	
  
-  <test name="Run On FIREFOX">
-  	<parameter name="browser" value="firefox"></parameter>
+  <test name="Run On CHROME">
+  	<parameter name="browser" value="chrome"></parameter>
     <classes>
 	    <class name="Com.bankguru.payment.Payment_01_PaymentWorkflow"/>
     </classes>

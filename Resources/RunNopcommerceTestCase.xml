@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Nop Commerce" parallel="false">
 
-
-
-
-
+	
 	<listeners>
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
 		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
@@ -14,12 +11,21 @@
 	</listeners>
 
 
-  <test name="Run On FIREFOX">
-  	<parameter name="browser" value="firefox"></parameter>
-    <classes>
-	    <class name="Com.nopcommerce_Login.Login_15_Data_Faker"/>
-    </classes>
-  </test> 
+   <test name="Run On CHROME"> 
+  	<parameter name="browser" value="chrome"></parameter>
+<!--   	<parameter name="url" value="http://demo.guru99.com/v4/"></parameter>	 -->
+    <classes> -->		
+		<class name="Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc"/>
+	</classes>
+  </test>  
+  
+<!--  <test name="Run On CHROME">  -->
+<!--   	<parameter name="browser" value="chrome"></parameter> -->
+<!--     <classes> --> -->
+<!-- 		<class name="Com.nopcommerce_Login.Login_16_Data_Java_Class"/> -->
+<!-- 		<class name="Com.nopcommerce_Login.Login_17_Data_Json"/>       -->
+<!-- 	</classes> -->
+<!--   </test>   -->
   
 <!--   <test name="Run On EDGE"> -->
 <!--   	<parameter name="browser" value="edge"></parameter> -->

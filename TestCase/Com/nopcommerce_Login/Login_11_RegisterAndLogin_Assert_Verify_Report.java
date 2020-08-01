@@ -28,15 +28,15 @@ import static org.testng.Assert.assertEquals;
 
 
 public class Login_11_RegisterAndLogin_Assert_Verify_Report extends AbstractTest  {
-	//private WebDriver driver;	
-	//private HomePageObject homePage;
+	private WebDriver driver;	
+	private HomePageObject homePage;
 	
 	
 	@Parameters ({"browser"})
 	@BeforeTest
 	  public void beforeTest(String browserName ) {
-		//driver = getBrowserDriver(browserName);
-		//homePage = PageGeneratorManager.getHomePage(driver);	
+		driver = getBrowserDriver(browserName);		
+		homePage = PageGeneratorManager.getHomePage(driver);	
 		
 	  } 
 	

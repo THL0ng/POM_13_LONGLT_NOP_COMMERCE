@@ -6,6 +6,7 @@ import Commons.AbstractPage;
 import Commons.AbstractPages;
 
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -17,12 +18,13 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
-public class Login_02_RegisterAndLogin2_AbstractPage_02_Extends extends AbstractPages {
+public class Login_02_RegisterAndLogin2_AbstractPage_02_Extends extends AbstractPages  {
 	private WebDriver driver;
 	private Select select;
 	private String email, password;	
 	//Declare an instance of Abstract Page
 	private AbstractPage abstractPage;
+	
 	
 	@BeforeTest
 	  public void beforeTest() {
@@ -30,7 +32,7 @@ public class Login_02_RegisterAndLogin2_AbstractPage_02_Extends extends Abstract
 		driver = new FirefoxDriver();
 	
 		openUrl(driver,"https://demo.nopcommerce.com/");
-		//driver.get("https://demo.nopcommerce.com/");
+		
 
 		// GENERATE RANDOM
 		email = "corona" + randowmNumber() + "@hotmail.com";

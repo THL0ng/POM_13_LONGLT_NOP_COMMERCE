@@ -1,4 +1,6 @@
-2020-05-16 10:52:38,045 INFO  Com.nopcommerce_Login.Login_15_Data_Faker -  -------------------------- PASSED -------------------------- 
-2020-05-16 10:52:43,031 INFO  Com.nopcommerce_Login.Login_15_Data_Faker -  -------------------------- PASSED -------------------------- 
-2020-05-16 10:52:43,033 INFO  Com.nopcommerce_Login.Login_15_Data_Faker - OS name = windows 10
-2020-05-16 10:52:43,899 INFO  Com.nopcommerce_Login.Login_15_Data_Faker - ---------- QUIT BROWSER SUCCESS ----------
+2020-08-01 19:02:05,031 INFO  Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc -  -------------------------- PASSED -------------------------- 
+2020-08-01 19:02:08,686 INFO  Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc -  -------------------------- PASSED -------------------------- 
+2020-08-01 19:02:13,962 INFO  Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc -  -------------------------- PASSED -------------------------- 
+2020-08-01 19:02:16,706 INFO  Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc -  -------------------------- PASSED -------------------------- 
+2020-08-01 19:02:16,711 INFO  Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc - OS name = windows 10
+2020-08-01 19:02:17,496 INFO  Com.nopcommerce_Login.Login_14_Sort_Asc_And_Desc - ---------- QUIT BROWSER SUCCESS ----------

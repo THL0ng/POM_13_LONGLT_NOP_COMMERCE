@@ -1,7 +1,11 @@
 package Com.nopcommerce_Login;
 
 import org.testng.annotations.Test;
+
+import Commons.AbstractTest;
+
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -13,15 +17,15 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
-public class Login_01_RegisterAndLogin {
+public class Login_01_RegisterAndLogin extends AbstractTest {
 	private WebDriver driver;
 	private Select select;
 	private String email, password;
 	
+	@Parameters ({"browser"})
 	@BeforeTest
-	  public void beforeTest() {
-		System.setProperty("webdriver.gecko.driver", ".\\LIB\\geckodriver.exe");
-		driver = new FirefoxDriver();
+	  public void beforeTest(String browserName) {
+		driver = getBrowserDriver(browserName);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.get("https://demo.nopcommerce.com/");
 		
@@ -30,7 +34,9 @@ public class Login_01_RegisterAndLogin {
 		password = "coronavirus";
 	  } 
 	
-  @Test
+ 
+
+@Test
   public void TC_01_RegisterToSystem() {
 	  driver.findElement(By.cssSelector(".ico-register")).click();
 	  
